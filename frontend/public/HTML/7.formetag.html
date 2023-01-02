@@ -7,19 +7,65 @@
 <body>
 
 	<form>
-	
-		<input value="인사과"/>				<br/>
-		<input type="text"/>				<br/>
-		<input type="password">				<br/>
-		<input type="radio" name="email"> 예	
-		<input type="radio" name="email">아니요<br/>
-		<input type="checkbox" name="item">뉴스
-		<input type="checkbox" name="item">드라마<br/>
+		<fieldset>
+			<legend>자주 사용되는 input </legend>
 		
+		[읽기모드]
+		<input value="인사과" readonl="readonly"/><br/>		
+		[사용금지]
+		<input type="text"disabled="disabled" placeholder="신입"/> <br/>     
+		[포커스]
+		<input type="password"placeholder="패스워드" autofocus="autoocus" >	<br/>		
+		
+		체크박스[단일선택]-동그라미
+		<input type="radio" name="email" checked="checked"> 예	
+		<input type="radio" name="email">아니요	<br/>
+		
+		체크박스[복수선택]-네모
+		<input type="checkbox" name="item">뉴스					
+		<input type="checkbox" name="item">드라마	<br/>
+		
+		</fieldset>
+		<hr/><!-- 구분선 -->
+		<fieldset>
+				<legend> html5 이상부터 추가된 input </legend>
+		[첨부파일]
+		<input type="file">
+		<input type="file" multiple="multiple" > 
+		
+						<input type="color">					<br/>
+		<input type="date">						<br/>
+		<input type="datetime-local">			<br/>
+		<input type="email">					<br/>
+		<input type="month">					<br/>
+		<input type="time">						<br/>
+		<input type="week">						<br/> 
+		<input type="range" min=0 max=10>					<br/>
+		<input type="number" min=0 max=10>					<br/>
+
+		
+		[버튼목록]
 		<input type="button"	value="인증">
 		<input type="submit"	value="폼전송">
-		<input type="reset"		value="입력초기화">
+		<input type="reset"		value="입력초기화">	<br/>
+		</fieldset>
+	
+	
+		[긴글텍스트]
+		<textarea rows="5" cols="10"style=resize:none></textarea> 
 		
+		[목록상자]
+		<select>
+			<option> 네이버 </option>
+			<option> 카카오 </option>
+			<option> 네이트 </option>	
+		</select>								<br/>
+		
+
+	
+		
+		
+				
 	</form>	
 
 </body>
