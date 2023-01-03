@@ -1,30 +1,14 @@
-<h3> 홈쇼핑 회원등록 </h3>
-</div>
-<div align="center">
-<form name="f1" action=Insert.do onSubmit="return  ch1()" >
-<table  width="600"  border=1 height="250">
-<tr><td width=200 align="center">회원번호(자동발생)</td>
-    <td width=400><input type=text  name=custno >  </td></tr>
-<tr><td align="center">회원성명</td>
-    <td ><input type=text  name=custname>  </td></tr>
-<tr><td align="center">회원전화</td>
-    <td><input type=text  name=phone size=30>  </td></tr>
-<tr><td align="center">회원주소</td>
-    <td><input type=text  name=address size=60>  </td></tr>
-<tr><td align="center">가입일자</td>
-    <td><input type=text  name=wjoindate >  </td></tr>
-<tr><td align="center">고객등급[A:VIP, B:일반, C:직원]</td>
-    <td><input type=text  name=grade>  </td></tr>
-<tr><td align="center">도시코드</td>
-    <td><input type=text  name=city>  </td></tr>
-<tr>
-    <td colspan=2 align="center">
-    <input type=submit  value="등록">
-    <input type=button onClick="Search()" value="조회"> 
-    </td></tr>
-</table>
-</form>
-</body>
-</html>
-<br><br><br><br><br><br>
-<c:import url="bottom.jsp"></c:import>
+   <form>
+   <th><h3>홈쇼핑 회원 등록</h3></th>  
+      <table border="1" >
+         <tr>   <th>회원번호(자동발생)</th> <td> <input type="number" placeholder="100006"></td>      </tr>
+         <tr>   <th>회원성명</th>   <td> <input type="text" placeholder="차공단"> </td>            </tr>
+         <tr>   <th>회원전화</th>   <td> <input type="tel"    placeholder="010-1111-7777"></td>      </tr>
+         <tr>   <th>회원주소</th> <td> <input type="url" placeholder="제주도 제주시 감나무골"></td>                                           </tr>
+         <tr>   <th>가입일자</th> <td> <input type="number" placeholder="20151211"></td>                                          </tr>
+         <tr>   <th>고객등 [A:VIP, B:일반, C:직원]</th> <td> <input type="text" placeholder="c"></td> </tr>
+         <tr>   <th>도시코드</th> <td>    <input type="number" placeholder="60"></td>                                          </tr>
+         <tr><th colspan="2"> <input type="submit" value="등록"><input type="button" value="조회"></td>                                    </tr>
+         
+      
+   </form>   

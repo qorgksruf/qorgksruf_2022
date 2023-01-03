@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+h3{
+	border-left : solid 10px green;/*왼쪽 테두리*/
+	padding-left: 20px; /* 왼쪽 안쪽여백*/
+	
+}
+
+ul{
+	background-color: #eeeeee;
+	border: solid 2px #cccccc;
+	border-radius :10px;
+	padding: 30px;
+	width: 500px; 
+}
+
+il{ 
+	margin: 10px 20px; /*바깥여백*/
+	line-height: 170%; /*줄간격*/
+	
+}
+
+form{
+	border: solid 2px #cccccc;	/*테두리*/
+	border-radius:20px;
+	padding:20px;	/*안쪽여백*/
+	width: 300px;	/*가로사이즈*/
+	margin: 30px;	/*바깥여백*/
+
+	
+	}
+	
+p{border-bottom: 1px dotted #cccccc;	/*아래쪽 테두리*/
+padding-bottom: 20px	/*아래쪽 안쪽여백*/
+ }	
+ 
+ 
+h4{
+	text-align: right;	/*텍스트 정렬*/
+	
+}
+ 
+ h4{	/* h4 a테그 꾸미기*/
+	 text-align: right;
+ 
+ }
+ 
+ 
+ a{		/*a 테그의 기본속성 제거*/
+	 color:black;
+	 text-decoration: none ;
+ 
+ }
+ 
+ 
+ 
+ 
+ 
