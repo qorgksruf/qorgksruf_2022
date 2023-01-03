@@ -24,7 +24,7 @@
 .signup_box li{ list-style-type: none; }
 
 /* li[ block -> inline-block ] */
-.colums li{ display: inline-block; }
+/* .colums li{ display: inline-block; } */
 
 .colums{ padding: 5px;}
 .colums .col1{ width: 150px; }
