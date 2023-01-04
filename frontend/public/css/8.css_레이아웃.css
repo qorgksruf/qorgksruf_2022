@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+#web_box{
+	border: 1px solid red;	
+	
+}
+
+#header{
+	border: 1px solid blue;
+	height: 200px;
+	background-color: blue;
+}
+
+#content{
+	border: 1px solid orange;
+	background-color: orange;
+	height: 600px; width: 1200px; 	/* 1000~1200 표준  */
+	margin:0 auto; 
+	display: flex;
+}
+
+#left_menu{
+	border: 1px solid gray;
+	background-color: gray;
+	height: 600px; width: 900px; /*부모가 1200이니 자식은 300-4 뺴야함  */			
+	
+
+}
+
+#right_menu{
+	border: 1px solid purple;
+	background-color: purple;
+	height: 600px; width: 290px; 		
+	
+	
+	
+}
+
+#footer{
+	border: 1px solid black;
+	height: 200px;
+	background-color: black;	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

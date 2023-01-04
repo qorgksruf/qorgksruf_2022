@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+
+.box{
+	border: 1px solid blue;
+	width: 100px; height: 50px;
+}
+	
+
+
+.flex_box1{
+	border: 1px solid red; padding: 5px;
+	display: flex;
+	flex-direction: row; 
+}
+
+
+
+
+.flex_box2{
+	border: 1px solid red; padding: 5px;
+	display: flex;
+	flex-direction: column; 
+}	
+	
+	
+.flex_box3{
+	border: 1px solid red; padding: 5px;
+	display: flex;
+	display: flex;
+	flex-direction: row-reverse; 
+}	
+	
+
+.flex_box4{
+	border: 1px solid red; padding: 5px;
+	display: flex;
+	flex-direction: column-reverse; 
+}	
+	
+
