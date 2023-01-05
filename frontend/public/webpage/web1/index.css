@@ -50,7 +50,7 @@ ul{ padding: 0px; }
 /* 대표이미지 */
 #main_img{
 	width:100%; height:250px;	/* 사이즈 */
-	background-image: url("img/로고2.png"); 	/* 배경이미지 */
+	background-image: url("img/main_img.png"); 	/* 배경이미지 */
 	background-repeat: no-repeat;				/* 자동채우기 제거 */
 	background-position: center; /* 배경 위치 */
 	margin: 20px 0px;
@@ -63,7 +63,7 @@ ul{ padding: 0px; }
 }
 
 .side_bar{ width: 250px;  }			/* 사이즈 */
----------------------------------
+
 .main_content{ width: 900px;  }		/* 사이즈 */
 
 /* 사이드바 제목 */
@@ -93,6 +93,10 @@ ul{ padding: 0px; }
 	padding: 20px;
 }
 #ft_box li{ color: white; }
+
+
+
+
 
 
 
