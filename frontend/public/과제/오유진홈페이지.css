@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/*----------------- 기본설정----------------------*/
+*{ margin: 0; padding: 0; font-family: "맑은 고딕";}
+a{ text-decoration: none; color: black; }
+li{list-style-type: none;}
+#header{ width: 1200px; margin: 0 auto; height: 100px;}
+/*----------------------------------------------*/
+
+/*헤더 시작*/
+/*헤더 끝*/
+
+/*본문 시작*/
+.content{width:1200px; margin: 0 auto;}
+.main_con{margin: 20px; text-align: center;}
+.main_con img{
+	width: 350px; vertical-align:middle;
+	margin:10px 0px 25px 25px;
+	}
+.main_con li{display:inline-block;}
+
+/*배너 */
+#item_wrap{width: 1200px; margin: 0 auto;}
+#item_top{text-align: center;}
+.hot_item{display: inline-block; flex-wrap: wrap; font-size: 12px; }
+
+p{color: #A2A2A2; text-align: center; font-size: 12px; padding-bottom: 17px;}
+
+.item1 img{width: 250px; vertical-align:middle;
+	margin:10px 0px 25px 25px;}
+
+.review{ color: #888888; text-align: right;}
+
+.hot_item1 .order_im{color: #00416E; font-weight: bold;}
+
+#order_im_padding{padding-top: 5px; font-size: 10px;}
+
+/*본문 끝*/
+
+/*푸터 시작*/
+#footer{background-color: #F7F7F7; margin-top: 15px;}
+.ft_box{width:1200px; margin: 0 auto;
+text-align:left;
+display: flex; }
+#ft_main{margin:50px;}
+
+
+/*푸터 끝 */

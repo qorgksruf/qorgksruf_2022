@@ -52,3 +52,18 @@
   float: left;
   color: black;
 }
+
+
+
+.right_content h3{
+	font-size: 15px;
+	border-left: 3px solid black;
+	flex-direction: column; 
+}
+
+.right_content_sub{
+	padding: 10px;
+	flex-direction: column; 
+}
+
+
