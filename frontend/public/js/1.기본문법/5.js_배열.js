@@ -39,10 +39,12 @@
 */
 // 1. 배열 선언 : [] 안에 , 구분해서 여러개의 자료 입력한다.
 let 배열명 = [ '유재석' , '강호동' , '신동엽' , '김현수' ]
+
 // 2. 배열 호출 
 console.log( 배열명 )
 document.write( 배열명 )
 document.write('<h3>'+배열명+'</h3>')		// * HTML 마크업은 JS내에서는 문자열 처리 
+
 // 3. 배열내 특정 요소만 호출 : 배열명[인덱스]
 console.log( 배열명[0] + 배열명[1] + 배열명[2] + 배열명[3] ) 
 document.write('<ol>')
@@ -51,30 +53,40 @@ document.write('<li>'+배열명[1]+'</li>')	// 변수/배열 문자열 처리X  
 document.write('<li>'+배열명[2]+'</li>')	// 변수/배열 문자열 처리X  // HTML 문자열처리 O
 document.write('<li>'+배열명[3]+'</li>')	// 변수/배열 문자열 처리X  // HTML 문자열처리 O
 document.write('</ol>')
+
 // 4. 배열의 길이
 console.log( 배열명.length +"명" )
 document.write('<p>현재 인원수 : '+배열명.length+'명</p>')
+
 
 // 5. 배열의 요소 추가 
 배열명.push('전현무')
 console.log( 배열명 )
 
+
 // 6. 배열의 특정 요소 제거 
 배열명.splice( 0 , 1 ); 
+배열명.splice( 2 , 2 );
 console.log( 배열명 ) // ['유재석', '강호동', '신동엽', '김현수', '전현무']
 	// * 한줄에 두개 이상의 명령어 작성시에는 ; 구분하기
+	
 	
 // 7. 데이터로 인덱스 찾기 
 let sindex = 배열명.indexOf('신동엽');	
 console.log( '신동엽 인덱스 : ' + sindex )
 
+
 // 8. 데이터로 요소 삭제 
 배열명.splice( 배열명.indexOf('신동엽') , 1 ); 
+배열명.splice( 2, 1 );
 console.log( 배열명 ) // ['강호동', '김현수', '전현무']
+
+
 
 // 9. 배열내 요소 데이터 변경 
 배열명.splice( 0 , 1 , '서장훈');	
 console.log(배열명)	// ['서장훈', '김현수', '전현무']
+
 
 // 10. 배열내 요소 사이[ 서장훈 과 김현수 사이  ] 요소 추가 
 배열명.splice( 1 ,  0 , '유재석' )

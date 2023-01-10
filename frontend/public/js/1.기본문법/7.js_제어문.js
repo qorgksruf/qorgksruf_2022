@@ -95,10 +95,15 @@ if( 성별=='M'||성별=='m'||성별=='남'||성별=='남자' ){
 //3.
 let점수=Number(prompt('점수입력'))
 
-if(점수 >=90 ) {console.log('A등급');}
-else if(점수 >= 80){ console.log('B등급'); } 
-else if(점수 >= 70){ console.log('C등급'); } 
-else { console.log('탈락');}
+if(점수 >=90 ) {
+	console.log('A등급');
+} else if (점수 >= 80){ 
+	console.log('B등급'); 
+} else if(점수 >= 70){ 
+	console.log('C등급'); 
+} else { 
+	console.log('탈락');
+}
 
 
 

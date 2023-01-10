@@ -42,30 +42,19 @@ function onLogin(){ // 함수[onLogin] 시작 점
 // ---------------------------- 2.과제2 함수 ---------------------//
 
 
+let studentArray2 = ['20230110' , '20230109' , '20230108', '20230111']
 
-let studentArray2 =['20230110' , '20230109' , '20230108']
-
-function 등록(){
-	console.log('등록 함수 실행;')
-
-studentArray2.splice('20230110' , '20230109' , '20230108','0','push')
-
-
+function regi(){
+	let inputStudentValue = document.querySelector('.cetralPark').value;
 	
-	
-	let smo = document.querySelector('.smo')
-
-
-	let smoValue = smo.value;
-		console.log(+  smoValue )
-
-	let sIndex = studentArray.indexOf( smoValue )
-		console.log(+ sIndex )
-		
-
-if(sIndex=='20230110'||sIndex=='20230109'||sIndex=='20230108'||sIndex=='push'){ console.log("실패");}
-else{alert('실패')}	
-	
+	if (inputStudentValue.length != 8) {
+		document.querySelector('.resultBox2').innerHTML ="등록실패";
+	} else if (studentArray2.indexOf(inputStudentValue) >= 0) {
+		document.querySelector('.resultBox2').innerHTML = "등록실패";
+	} else {
+		studentArray2.push(inputStudentValue);
+		document.querySelector('.resultBox2').innerHTML = "등록성공!!!!";
+	}
 }	
 
 
