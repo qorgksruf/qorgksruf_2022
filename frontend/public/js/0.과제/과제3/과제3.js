@@ -8,7 +8,7 @@ function addcontent() {		// 버튼을 클릭했을 때
 	
 	let content = document.querySelector(".contents").value ;// contents 라는 클래스의 값을 가져온다. (input 태그)
 	
-	contentArray.push(content);	// contentArray 아파트에 입주
+	contentArray.push(content);	// contentArray 아파트에 입주 
 
 	let tableContent = "";	// 테이블에 뿌려줄 태그를 포함한 내용
 	
