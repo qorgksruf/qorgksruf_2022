@@ -13,7 +13,7 @@ function addcontent() {		// 버튼을 클릭했을 때
 	let tableContent = "";	// 테이블에 뿌려줄 태그를 포함한 내용
 	
 	for (let i = 0; i < contentArray.length; i++) {
-		tableContent += "<tr><th>" + (i+1) + "</th><th>" + contentArray[i] + "</th></tr>";
+		tableContent = tableContent + "<tr><th>" + (i+1) + "</th><th>" + contentArray[i] + "</th></tr>";
 	}
 	
 	document.querySelector("._table").innerHTML = tableContent;
@@ -22,3 +22,4 @@ function addcontent() {		// 버튼을 클릭했을 때
 
 
 
+ 
