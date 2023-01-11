@@ -1,37 +1,24 @@
 
 console.log( 'js실행') //테스트
 
-//1번 실행결과 누적여	부
-let 테이블행 ='<tr> <th> j </th> <th> i </th> </tr>';
+let contentArray = [];		// 방명록 내용이 들어갈 배열 (초기값 새팅) - 전역변수
 
-let i=prompt ("내용입력")
-let j =Number(prompt("번호"))
-
-for(let i of regi){
-		console.log("방명록:"+i)
+function addcontent() {		// 버튼을 클릭했을 때
+	console.log('클릭했다.');	// 잘 눌렸는 지 확인
 	
-	테이블행 ='<tr> <th>j </th> <th>i</th> </tr>';
+	let content = document.querySelector(".contents").value ;// contents 라는 클래스의 값을 가져온다. (input 태그)
+	
+	contentArray.push(content);	// contentArray 아파트에 입주
+
+	let tableContent = "";	// 테이블에 뿌려줄 태그를 포함한 내용
+	
+	for (let i = 0; i < contentArray.length; i++) {
+		tableContent += "<tr><th>" + (i+1) + "</th><th>" + contentArray[i] + "</th></tr>";
+	}
+	
+	document.querySelector("._table").innerHTML = tableContent;
 }
 
 
-document.querySelector("._table").innerHTML = 테이블행	
-
-
-function addcontent(){
-	console.log('클릭했다.');//3.확인
-	
-		let regi=document.querySelector(".regi").value
-
-
-for(let i of regi){
-		console.log("방명록:"+i)
-	
-	테이블행 ='<tr> <th>j</th> <th>i</th> </tr>';
-}
-
-}
-
-
-document.querySelector("._table").innerHTML = 테이블행	
 
 

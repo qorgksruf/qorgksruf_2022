@@ -44,7 +44,7 @@
 //while(10>5){ alert('실행문');}	//10이 5보다 크니까 반복실행
 
 //3.while
-let 입력=prompt('입력:')
+let 입력=prompt('입력:')		
 while(입력 !='exit'){		//조건) 입력된 값이 exit가 아니면 아래 코드 실행
 	console.log('실행중')
 	입력=prompt('입력')	// 반복적으로 입력받기
