@@ -117,12 +117,32 @@ console.log( '결과2 : ' + result2 )
 
 */
 
-let value4 = Number( prompt('정수4') )
+/*let value4 = Number( prompt('정수4') )
 let value5 = Number( prompt('정수5') )
 let value6 = Number( prompt('정수6') )
 let max = value4
 max = max < value5 ? value5 : max
 max = max < value6 ? value6 : max
 console.log( ' 가장 큰 수는 : ' + max )
+*/
+
+let 단=Number(prompt("단"))
+let 곱=Number(prompt("곱"))
+
+
+function On(){
+ 		for(let 단=2; 단<=9; 단++){
+		
+		for(let 곱=1; 곱<=9; 곱++){
+			console.log(단+' * '+곱+'='+(단*곱))
+		
+		
+	}
+	}
+	
+}
+
+
+
 
 

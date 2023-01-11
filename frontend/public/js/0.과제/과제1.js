@@ -44,22 +44,22 @@ function onLogin(){ // 함수[onLogin] 시작 점
 
 let studentArray2 = ['20230110' , '20230109' , '20230108', '20230111']
 
+
+//함수시작
 function regi(){
+	//테스트 
+	
 	let inputStudentValue = document.querySelector('.cetralPark').value;
 	
 	if (inputStudentValue.length != 8) {
 		document.querySelector('.resultBox2').innerHTML ="등록실패";
 	} else if (studentArray2.indexOf(inputStudentValue) >= 0) {
-		document.querySelector('.resultBox2').innerHTML = "등록실패";
+		document.querySelector('.resultBox2').innerHTML = "이미등록된학번입니다";
 	} else {
 		studentArray2.push(inputStudentValue);
 		document.querySelector('.resultBox2').innerHTML = "등록성공!!!!";
 	}
-}	
-
-
-
-
+}	//함수끝
 
 
 
