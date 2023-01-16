@@ -1,7 +1,7 @@
 console.log('1.js실행')
 
 // * 배열선언 [ board 객체 여러개를 저장하는 배열 / 함수 밖에 있는 이유 : 누적 저장]
-let boardArray = [ { writer : 신익철, 	content : 심재희 , 	password : 신동준 },]
+let boardArray = [ ]
 	// 예시 :  [ { 속성:값 } , { 속성:값 } , { 속성:값 } , { 속성:값 } ]
 	
 // 1. 작성 버튼 클릭시 실행되는 함수
