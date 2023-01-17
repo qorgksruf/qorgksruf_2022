@@ -26,9 +26,24 @@ document.addEventListener('DOMContentLoaded', 함수1)	//문서에서 이벤트�
 document.onload =function(){console.log('문서열림2')}
 document.addEventListener('DOMContentLoaded',function(){console.log('문서열림2') } )
 	//3.화살표 함수 적용[ (인수) => {실행문} ] 함수 적용
-document.onloag=() => {console.log('문서열림3')}	
+document.onload=() => {console.log('문서열림3')}	
 document.addEventListener('DOMContentLoaded',() => {console.log('문서열림3')})
 
 let 익명함수=function(){ console.log ('문서열림5')}
 let 화살표함수=( )=> {console.log ('문서열림4')}
 let 객체={행동:( )=>{console.log ('문서열림6')}}
+
+// function() {} = "() => {}" 공공, 의료, 금융 기타 등등 대부분 시스템은 오래되어 있기 때문에 통일성을 위해 function 을 사용한다.
+
+// ES6 함수 ()=>{} 는 vueJS 같은 곳에서 쓰되 대부분 쇼핑몰 같은 신식 홈페이지 제작할 때 쓴다.
+
+// 그러므로 function 을 사용하기를 맴우맹무ㅐ우매우ㅐ무애무애ㅜ매우매ㅜ애ㅜ매ㅜ 권장한다.
+
+// onload 는 html 이 바로 load가 완료되었을 때 실행한다 라는 의미를 갖고 있다. (어쩔 떄 쓰냐 네이버에 진입하자마자 나는 로그인을 하고 싶다 ㅇㅋ?)
+
+// ex) 네이버를 틀었다 > 각각 이미지가 들어가야할 곳이 있어야 할 거 아니야? > 그러면 일단 문서 html 을 로드를 완료하고 > 해당 각각의 이미지 들어갈 부분에 서버에서 해당 이미지를 불러올 때 onload 사용
+
+익명함수 // 문서열림5가 바로 실행되겠지?
+
+
+

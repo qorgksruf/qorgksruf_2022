@@ -32,6 +32,7 @@ addbtn.addEventListener( 'click' , () => {
 		alert('이름은 3~5글자 입력해주세요.') ; check = false;
 	}
 		// 4. 숫자 아닐경우 [ isNaN() : 숫자형식 체크 [ 문자이면 true or 숫자이면 false ] ]
+	
 	if( isNaN( info.kor ) || isNaN( info.eng ) || isNaN( info.mat ) ){
 		alert('숫자형식으로 입력해주세요') ; check = false;
 	}
