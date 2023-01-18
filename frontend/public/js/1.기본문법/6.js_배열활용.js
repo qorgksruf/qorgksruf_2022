@@ -49,7 +49,7 @@ function onDelete( ){
 }
 
 
-function 이름 : 이름이라는 기능을 만들거다~~
+/*function 이름 : 이름이라는 기능을 만들거다~~
 
 function 카메라()
 
@@ -61,4 +61,4 @@ function 문자 (a, b) { a:문자내용, b
 
 function 콩불 (콩나물, 불고기) {
 	html = document
-}
+}*/
