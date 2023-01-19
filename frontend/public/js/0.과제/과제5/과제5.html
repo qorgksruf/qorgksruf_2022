@@ -25,18 +25,19 @@
 					<div class="cartbox"> <!-- 카트 출력 구역 -->
 						<div class="cartcontent" >	<!-- 제품개수 , 제품가격 , 제품정보 구역  -->
 							<div class="carttop"><!-- 제품개수 , 제품가격 구역 -->
-								<div> 카트 <span class="pcount">3</span> </div>
+								<div> 카트 <span class="pcount">0</span> </div>
 								<div> 총 주문금액 <span class="ptotal">0</span> </div>
 							</div> <!--  제품개수 , 제품가격 구역 end  -->
 							
 							<div class="cartbottom"> <!-- 제품정보 구역  -->
-						
+
+							
 							</div> <!-- 제품정보 구역 end   -->
 							
 						</div> <!-- end  -->
 						
 						<div class="cartbtn"> <!-- 버튼구역  -->
-							<button onclick="cancel()"  class="cancelbtn" type="button">취소</button>
+							<button onclick="cancel()" class="cancelbtn" type="button">취소</button>
 							<button onclick="order()" class="orderbtn" type="button">주문하기</button>
 						</div>  <!--  버튼구역 end  -->
 					</div> <!-- 카트 end  -->
@@ -47,8 +48,23 @@
 		
 		<div class="container">  <!-- 포스기 구현 -->
 			<div>
-			
+				<h3 class="info"> 버거 등록 </h3>
+				버거이름 : <input class="name" type="text"> <br/>
+				버거가격 : <input class="price" type="text"><br/>
+				버거카테고리 : <input class="category" type="text"><br/>
+				버거이미지 : <input class="img" type="text"><br/>
+				<button onclick="regi( )" type="button">등록</button>
 			</div>
+		
+			<div>
+			<table class="burger_table" border="1"></table>	
+			</div>
+			
+			
+			<table class="burger_table2" border="1"></table>	
+			
+			
+			
 		</div>
 		
 	</div> <!-- wrap end  -->

@@ -1,18 +1,16 @@
 
 /* 공통 - DB */
-//등록된 카테고리 목록
+// 등록된 카테고리 목록 
 let categoryList = [ '프리미엄', '스페셜' , '와퍼', '올데이킹','치킨버거']
-
-//등록된버거
+// 등록된 버거 목록 
 let burgerList = [ 
 	{ name : '기네스콰트로치즈와퍼' , price : 9500 , img : '기네스콰트로치즈와퍼.png' , category : '프리미엄' } ,
 	{ name : '몬스터X' , price : 8000 , img : '몬스터X.png' , category : '프리미엄' } ,
-	{ name : '치킨킹팩1' , price : 13000 , img : '치킨킹팩1.png' , category : '스페셜' } 
+	{ name : '치킨킹팩1' , price : 13000 , img : '치킨킹팩1.png' , category : '스페셜' } ,
+	{ name: '비프불고기버거', price : 9000, img: '비프불고기버거.png', category:'와퍼'}
 ]
-
-
-let cartList = [  ]//카트목록
-let orderList=[ ]//주문목록
+let cartList = [  ] // 카트 목록 
+let orderList = [  ] // 주문 목록
 
 category_print();
 categoey_select( 0 ); // 기본값 : 프리미엄
@@ -56,7 +54,6 @@ function product_print( index ){
 	// *
 	for( let i = 0 ; i<burgerList.length ; i++ ){
 		// i는 0번째 인덱스부터 마지막인덱스까지 버거 객체 가져온다.
-		
 		if( burgerList[i].category == categoryList[index] ){
 			// i번째 버거객체의 카테고리와 선택된 카테고리와 같으면 
 			html += `<div onclick="cardadd( ${i} )" class="product">
@@ -86,36 +83,35 @@ function cancel(){
 // 6. 주문 하기 버튼 
 function order(){
 	alert('주문 합니다.');
-	console.log(cartList)/*주문전 카트리스트*/
-	//마지막인덱스: 배열명.length-1
+	// 1. 주문번호 만들기  [ // 마지막인덱스 : 배열명.length-1 ]
 	let no = 0;
+	if( orderList.length == 0 ){ no = 1;} // 1. 만약에 길이가 0 이면 [ 주문 하나도 없으면 주문번호 1 ]
+	else{ no = orderList[ orderList.length-1 ].no+1 } // 2. 아니면 마지막인덱스 주문객체의 주문번호+1 를 다운 주문번호 사용 
 	
-	if( orderList.length==0){ no = 1;}
+	// 2. 카트배열 -> 새로운배열 [ 주문객체에 카트배열 대입시 카트배열 초기화시 주문객체내 카트배열도 초기화 = 메모리 동일하기 때문에 ]
+	let for배열 = cartList.forEach( (o) => { console.log(o); return o; } )
+	console.log( for배열 )
+	console.log("--------------------------------------")
+	let map배열 = cartList.map( (o) => {console.log(o); return o; } )
+	console.log( map배열 )
 	
-	else{ no=orderList[orderList.length-1].no+1 }
+	// 3. 총가격 만들기 
+	let total = 0;
+	for( let i = 0 ; i< map배열.length ; i++ ){ total += map배열[i].price }
 	
-	let total=0;
-	
-	for(let i=0; i < cartList ; i++){total += cartList[i].price }
-	//1.order객체 만들기
-	let order= {
-		no : no,
-		items: cartList.map( (o)=>{return o; } ),		//.map( () => {} )
-		time: new Date(),	//new Date(): 현재 날짜와 시간
-		state: true ,		//true= 일단 주문
-		complete: 0,
-		price: total
-		
-	 }
-		orderList.push(order)
-		console.log(orderList)
-	//2. order넣어
-	
-	orderList.push( order )
-
-
-
-	//주문완료후
+	// 1. 주문
+		// 1. order 객체 만들기 
+		let order = { 
+			no :  no ,
+			itmes : map배열 ,			// 카트배열 ---> 새로운배열 
+			time :  new Date() ,	// new Date() : 현재 날짜/시간 호출   
+			state : true ,			// true : 일단 주문	// false : 주문완료  
+			complete : 0 ,			// 아직 주문 완료 되기전 
+			price : total			// cartlist 배열내 버거객체들의 총금액 합계 
+		}
+		// 2. order 객체 배열에 저장 
+		orderList.push( order  ); console.log(  orderList )
+	// 2. 주문완료 후 
 	cartList.splice(0)
 	cart_print();
 }
@@ -139,10 +135,113 @@ function cart_print(){
 	document.querySelector('.cartbottom').innerHTML = html; // 2. 구성된 html 마크업에 대입 
 }
 
+/*
+	for( let 반복변수 of 배열명 ) {  실행문; }		: 배열내 모든 요소를 하나씩 반복변수에 대입후 실행문;
+	
+	배열명.forEach( (반복변수) -> { 실행문; }  )		: 배열내 모든 요소를 하나씩 반복변수에 대입후 실행문;
+	
+	배열명.map( (반복변수) -> { 실행문; retrun 값; } )	: 배열내 모든 요소를 하나씩 반복변수에 대입후 실행문;
+						* retrun 값을 새로운 배열 반환
+
+	- 기존 배열 메모리를 새로운 배열메모리 할당 방법
+		1. 
+			let 새로운배열  = cartList.map( (o) => {console.log(o); return o; } )
+
+		2. 
+			let 새로운배열 = [ ]
+			for( let i = 0 ; i<cartList.length ; i++ ){ 새로운배열.push( cartList[i] ) }
+*/
+
+/*6. 등록함수 한결과제 시작_1*/
+	let info = {
+		
+		b_name : document.querySelector('.name').value ,
+		b_price : parseInt( document.querySelector('.price').value ) ,
+		b_category :  document.querySelector('.category').value  ,
+		b_img :  document.querySelector('.img').value 
+	}
+	console.log(info)
+	let check = true;
+	
+	if( categoryList[i].name !== info.b_category ){
+			alert('카테고리를 확인하세요.'); check = false;
+		}	
+	if( isNaN( info.b_price ) ){
+		alert('숫자형식으로 입력해주세요'); check = false;
+	}
+	if( check ){ burgerList.push( info ); alert('버거등록에성공하였습니다.'); regi( ); }
 
 
 
 
+/*7. 한결과제_버거현황출력의 버튼(삭제, 가격수정><)*/
+
+/*삭제버튼*/
+
+function b_delete(i){ // f s 
+	burgerList.splice( i , 1 );
+	regi( );
+}
+
+/*수정버튼 수정부분 함수 다시 생각~!!*/
+let upindex=-1;
+function b_update(i){
+	upindex=i;
+	
+
+	regi( );
+}
+
+
+regi( )
+
+function regi( ){
+	// 4. 출력할 html 구성 [ + vs ` ]
+	let html = `<tr>			
+					<th>제품번호</th>
+					<th>이미지</th>
+					<th>버거이름</th>
+					<th>카테고리</th>
+					<th>가격</th>
+					<th>비고</th>
+				</tr>` 			
+				
+				
+	for( let i = 0 ; i<burgerList.length; i++ ){ // 5. 내용추가 [ 반복 이용한 배열내 요소 출력 ]
+		html += `<tr>
+					<td>${ i+1 }</td>
+					<td><img src="img/${ burgerList[i].img }" width="30%" /></td>
+					<td>${ burgerList[i].name }</td>
+					<td>${ categoryList[i] }</td>
+					<td>${ burgerList[i].price.toLocaleString()}</td>
+					<td><button onclick="b_delete( ${i} )">삭제</button></td>
+					<td><button onclick="b_update( ${i} )">가격수정</button></td>
+				</tr>`	
+												/* onDelete( 삭제할번호 ) */
+	} // for end 
+	document.querySelector('.burger_table').innerHTML = html; // 6. 위에서 구성된 html를 해당 마크업에 대입
+}
+
+function order(i){	
+	
+	let html = `<tr>			
+					<th>주문번호</th>
+					<th>버거이름</th>
+					<th>상태</th>
+					<th>비고</th>
+				</tr>` 		
+				
+	for( let i = 0 ; i<orderList.length; i++ ){
+		html += `<tr>
+					<td>${ i+1 }</td>
+					<td>${orderList[i].name  }</td>
+					<td>${ orderList[i] }</td>
+					<td><button onclick="order_ok( ${i} )">주문완료</button></td>
+				</tr>`	
+
+	}
+		document.querySelector('.burger_table2').innerHTML = html;			
+}
 
 
 
