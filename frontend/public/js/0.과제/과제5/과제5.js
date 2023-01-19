@@ -222,6 +222,8 @@ function regi( ){
 	document.querySelector('.burger_table').innerHTML = html; // 6. 위에서 구성된 html를 해당 마크업에 대입
 }
 
+
+
 function order(i){	
 	
 	let html = `<tr>			
