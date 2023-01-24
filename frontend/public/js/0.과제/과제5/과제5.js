@@ -71,6 +71,8 @@ function product_print( index ){
 // 4. 선택한 제품을 카트에 담기 
 function cardadd( i ){ // f s 
 	cartList.push( burgerList[i] ) // 1. 선택한 i번째 버거의 객체를 cartlist에 추가 
+	console.log(burgerList[i])
+	console.log(cartList)
 	cart_print();  // 카트내 제품 화면 렌더링[새로고침]
 } // f e 
 
@@ -82,7 +84,7 @@ function cancel(){
 
 // 6. 주문 하기 버튼 
 function order(){
-	alert('주문 합니다.');
+	alert ('주문 합니다.');
 	// 1. 주문번호 만들기  [ // 마지막인덱스 : 배열명.length-1 ]
 	let no = 0;
 	if( orderList.length == 0 ){ no = 1;} // 1. 만약에 길이가 0 이면 [ 주문 하나도 없으면 주문번호 1 ]
@@ -103,17 +105,21 @@ function order(){
 		// 1. order 객체 만들기 
 		let order = { 
 			no :  no ,
-			itmes : map배열 ,			// 카트배열 ---> 새로운배열 
+			items : map배열 ,			// 카트배열 ---> 새로운배열  아이템 : items, itmes
 			time :  new Date() ,	// new Date() : 현재 날짜/시간 호출   
 			state : true ,			// true : 일단 주문	// false : 주문완료  
 			complete : 0 ,			// 아직 주문 완료 되기전 
 			price : total			// cartlist 배열내 버거객체들의 총금액 합계 
 		}
 		// 2. order 객체 배열에 저장 
-		orderList.push( order  ); console.log(  orderList )
+		orderList.push( order  );
+		console.log("orderList :: ") 
+		console.log(  orderList )
+		order_cart();
 	// 2. 주문완료 후 
 	cartList.splice(0)
 	cart_print();
+	
 }
 
 // 7. 카트내 버거 출력 [ 1. 제품 클릭할때마다 , 2.취소/주문 ]
@@ -153,6 +159,9 @@ function cart_print(){
 */
 
 /*6. 등록함수 한결과제 시작_1*/
+function fixPrice () {
+	
+	
 	let info = {
 		
 		b_name : document.querySelector('.name').value ,
@@ -161,15 +170,27 @@ function cart_print(){
 		b_img :  document.querySelector('.img').value 
 	}
 	console.log(info)
+	
 	let check = true;
 	
-	if( categoryList[i].name !== info.b_category ){
-			alert('카테고리를 확인하세요.'); check = false;
-		}	
-	if( isNaN( info.b_price ) ){
-		alert('숫자형식으로 입력해주세요'); check = false;
+	for(let i=0; i<=length; i++){
+		if( categoryList[i].name !== info.b_category ){
+				alert('카테고리를 확인하세요.'); check = false;
+			}	
+		if( isNaN( info.b_price ) ) {
+			alert('숫자형식으로 입력해주세요'); 
+			check = false;
+		}
+		if( check ) { 
+			burgerList.push( info ); 
+			alert('버거등록에성공하였습니다.');
+			regi( ); 
+		}
+
 	}
-	if( check ){ burgerList.push( info ); alert('버거등록에성공하였습니다.'); regi( ); }
+
+}
+
 
 
 
@@ -186,14 +207,34 @@ function b_delete(i){ // f s
 /*수정버튼 수정부분 함수 다시 생각~!!*/
 let upindex=-1;
 function b_update(i){
-	upindex=i;
+	/*upindex=i;*/
 	
-
+	let info = {
+		
+		b_name : document.querySelector('.name').value ,
+		b_price : parseInt( document.querySelector('.price').value ) ,
+		b_category :  document.querySelector('.category').value  ,
+		b_img :  document.querySelector('.img').value 
+	}
+	console.log(info)
+	
+	let check = true;
+	
+	if( categoryList[i].name !== info.b_category ){
+			alert('카테고리를 확인하세요.'); check = false;
+		}	
+	if( isNaN( info.b_price ) ) {
+		alert('숫자형식으로 입력해주세요'); 
+		check = false;
+	}
+	if( check ) { 
+		burgerList.push( info ); 
+		alert('버거등록에성공하였습니다.');
+		regi( ); 
+	}
+	
 	regi( );
 }
-
-
-regi( )
 
 function regi( ){
 	// 4. 출력할 html 구성 [ + vs ` ]
@@ -224,7 +265,7 @@ function regi( ){
 
 
 
-function order(i){	
+function order_cart(){	
 	
 	let html = `<tr>			
 					<th>주문번호</th>
@@ -237,7 +278,8 @@ function order(i){
 		html += `<tr>
 					<td>${ i+1 }</td>
 					<td>${orderList[i].name  }</td>
-					<td>${ orderList[i] }</td>
+					<td>${orderList[0].items[i].name  }</td>
+					<td>${ orderList[0].items[i].price }</td>
 					<td><button onclick="order_ok( ${i} )">주문완료</button></td>
 				</tr>`	
 
