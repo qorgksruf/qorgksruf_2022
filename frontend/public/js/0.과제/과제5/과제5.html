@@ -30,7 +30,6 @@
 							</div> <!--  제품개수 , 제품가격 구역 end  -->
 							
 							<div class="cartbottom"> <!-- 제품정보 구역  -->
-
 							
 							</div> <!-- 제품정보 구역 end   -->
 							
@@ -48,22 +47,30 @@
 		
 		<div class="container">  <!-- 포스기 구현 -->
 			<div>
-				<h3 class="info"> 버거 등록 </h3>
-				버거이름 : <input class="name" type="text"> <br/>
-				버거가격 : <input class="price" type="text"><br/>
-				버거카테고리 : <input class="category" type="text"><br/>
-				버거이미지 : <input class="img" type="text"><br/>
-				<button onclick="regi( )" type="button">등록</button>
+				<form>
+					버거이름 : <input type="text" 		class="bname">	<br/>
+					카테고리명 : <input type="text" 	class="bcategory"> <br/>
+					가격 : <input type="text" 		class="bprice"> <br/>
+					이미지 : <input type="text" 		class="bimg"> <br/>
+					<button onclick="onAdd()" type="button"> 버거등록 </button>
+				</form>
 			</div>
-		
 			<div>
-			<table class="burger_table" border="1"></table>	
+				<table border="1" class="burgertable">
+					
+				</table>
+			</div>
+			<div>
+				<table border="1" class="ordertable">
+					
+				</table>
 			</div>
 			
-			
-			<table class="burger_table2" border="1"></table>	
-			
-			
+			<div>
+				<table border="1" class="salestable">
+					
+				</table>
+			</div>
 			
 		</div>
 		
