@@ -39,7 +39,6 @@ width: 100px; height: 100px; position: absolute;
 	background-size: 80%;
 	background-repeat:no-repeat;
 	background-color: red;
-	background-image: url("img/체력바");
 }
 
 .m_bar{
