@@ -3,7 +3,7 @@ let userbox = document.querySelector('.userbox');
 let monbox =document.querySelector('.monbox');
 let m_bar=document.querySelector('.m_bar');
 let c_bar=document.querySelector('.c_bar');
-
+let backdround=document.querySelector('.wrap');
 let logbox=document.querySelector('.logbox');
 let logbox2=document.querySelector('.logbox2');
 
@@ -39,7 +39,7 @@ let u_attack =1;
 
 // 2. 문서 안에서 키 입력 이벤트 
 
-document.addEventListener( 'keydown' , (e)=>{
+document.addEventListener( 'keydown' , (e) => {
 	let key = e.keyCode;	// 입력된 키 코드를 변수에 저장 
 	
 	if( key == 37 ){ // 왼쪽키
@@ -68,22 +68,24 @@ document.addEventListener('keyup',(e)=>{
 
 
 function 공격(){
-	let 거리 =  ( m_left-u_left ) 
-	if( 거리 >=0 && 거리 <=80){
+	let 거리 =  ( m_left - u_left );
+	if( 거리 >=0 && 거리 <=800){
 		mhp -= 20;
-		m_bar.style.width =  `${ mhp }px`
+		m_bar.style.width =  `${ mhp }px`;
 		if( mhp < 0 ){
-			monindex++; // 다음 몬스터 i 증가 
-			몬스터교체( monindex ) // i 대입
-		if( mhp < 0 && (monindex = 2) ){
-				alert('죽음')	}		/*여기 안됨*/
+			if( mhp < 0 && (monindex == 2) ){
+				console.log("mhp ::: " + mhp);
+				monbox.style.width =  `0px`
+				backdround.style.backgroundImage=`url("img/images.png")`
+				backdround.style.backgroundSize= `70%`;	
+			} else {
+				monindex++; // 다음 몬스터 i 증가
+				몬스터교체( monindex ); // i 대입
+			}
 		}
 			
 	}
-}	
-	
-
-
+}
 
 
 function 타격(){
@@ -93,7 +95,7 @@ function 타격(){
 	if( 거리 >=0 && 거리 <=80){
 	uhp -= 20;
 	c_bar.style.width =  `${ uhp }px`	
-	/*userbox.style.width =  `${ uhp }px`*/
+	userbox.style.width =  `${ uhp }px`
 	}
 }
 
