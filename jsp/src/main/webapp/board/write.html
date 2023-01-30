@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">	<!-- 한글 인코딩 : UTF-8 -->
+	<title>food_yummy.</title>	<!-- 페이지 제목 -->
+	<!-- 반응형 : 뷰포트 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 사용자정의 : css -->
+	<link href="/jsp/css/index.css" rel="stylesheet">
+	<!-- 부트스트랩 : css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- 썸머노트 : css -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<!--상단 메뉴  -->
+	<div class="navbar navbar-expand-lg sticky-top bg-white h_top">	<!--네비케이션 [메뉴] sticky-top=상단고정 bg-white배경색 -->
+		<div class="container" >		<!--구역  -->
+			<div class="collapse navbar-collapse">						<!--감추기  -->
+		<ul class="navbar-nav h_topmenu">												<!--메뉴 목록  -->
+			<li class="nav-item"> <a class="nav-link" href="/jsp/member/login.html"> 로그인 </a> </li>		<!-- 메뉴 항목 -->
+			<li class="nav-item"> <a class="nav-link" href="/jsp/member/signup.html"> 회원가입 </a> </li>
+			<li class="nav-item"> <a class="nav-link" href="#"> 장바구니 </a> </li>
+			<li class="nav-item"> <a class="nav-link" href="#"> 마이페이지 </a> </li>
+			<li class="nav-item"> <a class="nav-link" href="/jsp/board/list.html"> 커뮤니티 </a> </li>
+			<li class="nav-item"> <a class="nav-link" href="#"> 문의사항 </a> </li>
+			<li class="nav-item"> <a class="nav-link" href="#"> 리뷰 </a> </li>
+		</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- 로고 -->
+	<div class="container logobox">
+		<a class="title" href="/jsp/index.html"> food_yummy.</a>
+	</div>
+	
+	<div class="navbar navbar-expand-lg sticky-top bg-white h_bottom">		<!--네비게이션, 가로베치  -->
+		<div class="container">					<!--구역  -->
+		
+			<!--콜랩스 버튼 : 메뉴가 콜랩스 되었을떄 보이는 버튼 -->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+				<span class="navbar-toggler-icon"> </span>
+			 </button>
+		
+		
+			<!-- 콜랩스 적용되는 메뉴 목록 -->
+			<div class="collapse navbar-collapse" id="navContent">		<!--부모 사이즈보다 작아지면 숨기기  -->
+				<ul class="navbar-nav  h_bottommenu">						<!-- 메뉴목록 -->
+					<li class="nav-item"><a class="nav-link" href="#">카테고리</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">브랜드 소개</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">케어식단</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">베스트</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">할인</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">브랜드관</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">기획전</a> </li>
+					<li class="nav-item"><a class="nav-link" href="#">이벤트</a> </li>
+
+				</ul>
+			</div>
+		</div>
+	
+	</div>	
+	<!-- 헤더 end -->
+	
+	<div class="container"> <!-- 반응형 구역  -->
+		<h3 class="box_title"> 게시글 작성 </h3>
+		
+		<form class="writeform"> <!-- 입력양식  -->
+		
+			<div class="row my-3"> <!-- 작성자 , 비밀번호 입력 구역  -->
+				<div class="col-md-3">
+					<input class="form-control bwriter" type="text" placeholder="작성자">
+				</div>
+				<div class="col-md-3">
+					<input class="form-control bpassword" type="password" placeholder="비밀번호">
+				</div>
+			</div>
+			<!-- col-md-12 인경우 생략경우 form-control 이 width:100%  -->
+			<input class="form-control my-3 btitle" type="text" placeholder="제목">
+			
+			<!-- 1.기본 textarea -->
+			<textarea class="form-control my-3 bcontent" rows="10" cols="" placeholder="내용1"></textarea>
+			
+			<!-- 2.썸머노트 textarea -->
+			<textarea id="summernote" class="form-control my-3" rows="10" cols="" placeholder="내용2"></textarea>
+			
+			<div class="row my-3">
+				<div class="col-md-3">
+					<input class="form-control" type="file">
+				</div>
+			</div>
+			
+			<div class="row col-md-4 offset-md-4"> <!-- 버튼 구역  -->
+				<div class="col-md-4"> 
+					<button class="form-control writebtn" onclick="board_write()" type="button">등록</button>
+				</div>
+				<div class="col-md-4" >
+					<button class="form-control resetebtn" type="reset">다시작성</button>
+				</div>
+				<div class="col-md-4">
+					<a href="list.html"> <button class="form-control backbtn" type="button">목록보기</button> </a>
+				</div>
+			</div>
+				
+		</form> <!-- form -->
+	</div> <!--  -->
+	
+	
+		<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+
+	<!-- 부트스트랩 : js   body 하단 작성 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<!-- jqeury : js api 라이브러리  -->
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!-- 썸머노트 : js -->
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	<!-- 썸머노트 : 한글 js -->
+	<script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+	 
+	
+	<!-- 사용자정의 js-->
+	<script src="../js/board/write.js" type="text/javascript"></script>
+
+
+</body>
+</html>
+
+<!-- 
+	부트스트랩 여백
+		m : margin
+			m-3 : 위아래왼쪽오른쪽
+			my-3 : 위아래
+			mx-3 : 왼쪽오른쪽 
+			mt-3 : 위
+			mb-3 : 아래
+			ms-3 : 왼쪽
+			me-3 : 오른쪽 
+		p : padding 
+			
+
+ -->
+
+	
+	
+		
+		
+	
+	
+	
+	
+	
+</body>
+</html>	
+	
+	
+	
+	
+	

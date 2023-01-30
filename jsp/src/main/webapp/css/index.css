@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* 웹폰트 : 눈누홈페이지 */
 @font-face {
     font-family: 'RixInooAriDuriR';
@@ -9,6 +10,7 @@
 }
 /* 기본값 설절 글꼴,색상,여백 */
 *{ font-family: '맑은 고딕'; color:black; margin: 0; padding: 0px; }
+a{color: black !important; text-decoration: none !important; }
 
 /* 로고 구역에서 텍스트 가운데 정렬  */
 .logobox{ text-align: center; }
@@ -37,7 +39,7 @@
 	font-family: 'RixInooAriDuriR';
 	border-bottom: 2px solid #999999;
 	width: 20%;			/* 박스 가로길이 */
-	margin: 0 auto; 	/* 박스권 가운데정렬 */
+	margin: 3 auto; 	/* 박스권 가운데정렬 */
 	padding-top: 10%;	/* 안쪽 윗 여백 */
 	padding-bottom: 1%;	/* 안쪽 아래 여백 */
 }
@@ -96,5 +98,6 @@
 	margin-top: 3%;
 }
 .item_review{ font-size: 12px; color: #999999; text-align: right;  }
+
 
 
