@@ -1,0 +1,39 @@
+@charset "EUC-KR";
+
+
+
+/***************** 공통설정 *********************/
+ * {background-color:white;
+ 	 text-align:center;
+ 	 border:0}
+ 	 
+a{
+text-decoration: none;
+color: black; }
+
+ .cgv_ad_top {
+ position:relative;
+ width:980px;
+ height:80px;
+ margin:0 auto}
+ 
+
+ 
+ .header_content {
+ 	display:  flex;
+    margin-bottom: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    width:980px;
+}
+ 
+ .header_content .contents {
+    display: inline-block;
+    justify-content: space-between;
+    padding: 30px 6px 25px 5px;
+    background-color: #fff;
+ }
+ 
+ .memberInfo_wrap li {
+ 	display: inline-block;
+ }
