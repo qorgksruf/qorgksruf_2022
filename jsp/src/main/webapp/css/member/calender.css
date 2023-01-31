@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+.calender{
+	border: 1px solid #eeeeee;
+	padding: 5%;
+	border-radius: 3%;
+	box-shadow: 0px 0px 3px red;
+}
+
+.cal_top{
+	display: flex;
+	justify-content: center;
+	margin: 5% 0%;
+}
+
+.previousbtn, .nextbtn{
+	background-color: white;
+	border: 1px solid #eeeeee; 
+	padding: 5px 20px;
+	color: #ffc0cb;	/* 연한 분홍색 */
+	font-size: 20px;
+}
+
+.top_date{
+	font-family: '맑은고딕';
+	margin: 0% 3%; 
+	color: #ffc0cb;
+}
+
+.cal_day{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap; /*하위 요소의 사이즈 부족할경우 자동 줄바꿈  */
+	
+}
+
+
+.day{
+	display: inline-block;
+	border: 1px solid #eeeeee;
+	width: 14%;	/*100/7=14.2  */
+	height: 100px;
+	overflow: hidden;
+}
+
+.content{
+	background-color: #ffc0cb;
+	color: white;
+	margin: 1%;
+	padding: 1%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 150px;
+}
+
+.weekday{
+	background-color: #ffc0cb;
+	font-size: 18px;
+	height: 30px; 
+	text-align: center;
+}
+
+.sunday{
+	background-color: red;
+	 color: white;
+}
+
+
+/*모달 배경 구역 */
+.modal_wrap{
+	position:fixed;
+	top: 0;
+	left: 0;
+	width: 100%; height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1030;
+	display: none;
+}
+
+/*모달 상자  */
+.modal_box{
+	background-color: white;
+	width: 40%;
+	padding: 3%; border-radius: 5%;
+}
+
+
+.modal_date{
+	font-size: 12px; font-weight: normal;
+}
+
+.modal_btns{
+	display: flex;
+	justify-content: flex-end;
+	margin: 3% 0%;
+}
+/* 모달버튼 */
+.modal_box button{
+	background-color: #ffc0cb;
+	padding: 5px 20px;
+	margin-left: 3%;
+	border: 1px solid #eeeeee; border-radius: 10px;
+}
+
+
+
