@@ -6,24 +6,49 @@ public class EX4_자료형변환 {// class s
 	public static void main(String[] args) { // main s
 
 		// 1.[p54] 자동타입변환
-		byte b1 = 10;
+		byte b1 = 10;				
+		System.out.println("b1:"+b1);
 		int i1 = b1; // byte->int가능
+		System.out.println("i1:"+i1);
+		
 		char c1 = '가';
+		System.out.println("c1:"+c1);
 		i1 = c1; // char->int가능
-		int i2 = 50;
+		System.out.println("i1:"+i1);
+		
+		int i2 = 50;				
+		System.out.println("i2:"+i2);
+		
 		long l1 = i2;
+		System.out.println("l1:"+l1);
+		
+		int i7 = 30;
+		long l4 = i7;
+		System.out.println("l4:"+l4);
+		
+		
 		long l2 = 100;
 		float f1 = 12;
+		System.out.println("f1:"+f1);
+		
 		float f2 = 100.5f;
+		System.out.println(f2);
 		double d1 = f2;
-
+		System.out.println(d1);
+		
 		// 58p
 		int i3 = 2000000000;
 		byte b2 = (byte) i3; // int->byte전환 불가능 [강제는 가능]
+		System.out.println(b2);
+		
 		long l3 = 300;
 		int i4 = (int) l3;
+		System.out.println("i4:"+i4);
+		
 		int i5 = 65;
 		char c2 = (char) i5;
+		System.out.println("c2:"+c2);
+		
 		double d2 = 3.14;
 		int i6 = (int) d2; // double-->int불가능
 		
@@ -33,20 +58,27 @@ public class EX4_자료형변환 {// class s
 
 		// 4.문자열 타입 변환
 		String str1 = "10"; // 10:int "10""string
+		int 인수1= Integer.parseInt(str1);
+		System.out.println("인수1:"+인수1);
 		
-		int 인수1= Integer.parseInt(str1); 
-		System.out.println(인수1);
+		//String s10="";
+		//int 인수10= Integer.parseInt(s10);
+	//	System.out.println("인수10:"+인수10);
+		
+
 		
 		short 쇼트1= Short.parseShort(str1); 
-		long 롱1=Long.parseLong(str1); 
-		float 플롯1=Float.parseFloat(str1);
+		System.out.println("쇼트1:"+쇼트1);
+		
+		//long 롱1=Long.parseLong(str1); 
+		//float 플롯1=Float.parseFloat("str1:"+str1);
 		 
 		double 더블1 = Double.parseDouble(str1);
 		System.out.println("더블1 ::: " + 더블1);
 
 		// "10"-----> 문자열타입의 숫자10---> 10: 정수형타입의 숫자10
 		// "ABC": 문자열타입의 문자뮻--->불가능
-		String str2 = "안녕";
+		String str2 = "나";
 		int 인트2 = Integer.parseInt(str2);
 		System.out.println("인트2");
 		
