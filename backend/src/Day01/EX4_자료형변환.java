@@ -78,11 +78,14 @@ public class EX4_자료형변환 {// class s
 
 		// "10"-----> 문자열타입의 숫자10---> 10: 정수형타입의 숫자10
 		// "ABC": 문자열타입의 문자뮻--->불가능
-		String str2 = "나";
-		int 인트2 = Integer.parseInt(str2);
-		System.out.println("인트2");
+
+		byte 정수5= 90;
+		int 정수4=(int)정수5;
+		System.out.println("정수4:"+정수4);
 		
-		
+		Short s10=5;
+		int i20= (int)s10;
+		System.out.println("i20:"+i20);
 		/*
 		 * int 인트3 = (Interger)str1; //불가능
 		 */

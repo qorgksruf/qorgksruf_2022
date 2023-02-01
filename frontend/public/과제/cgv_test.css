@@ -1,0 +1,104 @@
+@charset "EUC-KR";
+
+
+
+/*공통 */
+ * {background-color:white;
+ 	 text-align:center;
+ 	 text-decoration: none;
+ 	 
+ }
+
+
+/* 맨위 광고 */
+.cgv_ad_top{
+	background-color: #DEDEDE;
+	text-align: center;
+	
+}
+
+/*헤더 전체구역설정  */
+.header {
+    position: relative;
+    z-index: 101;
+}
+
+/* logo|| 광고 로그인 회원가입 my_cgv 고객센터   */
+.header_top {
+    margin-bottom: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.header .header_btn {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.header_top .header_btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 6px 25px 5px;
+    background-color: #fff;
+}
+
+.header_top .header_btn h1 {
+    display: inline-flex;
+    align-items: flex-end;
+    height: 53px;
+}
+
+.header_top .header_btn h1 a {
+    display: block;
+    float: left;
+    height: 100%;
+}
+
+.header_top .header_btn h1 a img {
+    display: block;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.header_top .header_btn h1 span {
+    font-weight: 300;
+    font-size: 16px;
+    color: #222;
+    letter-spacing: 0.313em;
+    line-height: 1.500em;
+}
+
+.header_top .header_btn .btn_list {
+    display: flex;
+    align-items: center;
+}
+
+.header_top .header_btn .btn_list li {
+    margin-left: 44px;
+    margin-top: 2px;
+}
+
+.header_top .header_btn .btn_list a {
+    display: block;
+    position: relative;
+    padding-bottom: 19px;
+}
+
+.header_top .header_btn .btn_list li a img {
+    width: 36px;
+    height: 36px;
+}
+
+
+.header_top .header_btn .btn_list li a span {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.462em;
+    white-space: nowrap;
+    transform: translate(-50%, 0);
+}
