@@ -15,7 +15,7 @@ package Day01;
 
 public class Ex1 {
 	
-	int 변수 = 10;	//class 안에서 코드 작성 가능
+	 int 변수 = 10;	//class 안에서 코드 작성 가능
 	//2. 실행되는 코드는 main함수{ } 안에서만 코드 작성한다
 	//main함수: 메인스레드 가지고 있는 함수
 	//스레드: 코드를 읽어드리는 흐름 단위
@@ -24,6 +24,8 @@ public class Ex1 {
 	public static void main(String[] args) {
 		//3. 출력: syso+ctrl+스페이스바-> 엔터
 		System.out.println("안녕자바"); //console.log();와 비슷
+
+		
 	}
 	
 }

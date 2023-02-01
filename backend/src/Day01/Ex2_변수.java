@@ -17,8 +17,9 @@ public class Ex2_변수 {	//class s
 		//[p37예제2]
 		int hour=3;	//변수 선언: int형 자료형 변수에 'hour'이름으로 3 저장
 		int minute=5; //int형 자료형 변수에 minute 이름으로 5 저장
-		System.out.println(hour+"시간" + minute+"분");
 		int totalMinute = (hour*60)+ minute;
+	
+		System.out.println(hour+"시간" + minute+"분");
 		System.out.println("총"+ totalMinute);
 		
 		
