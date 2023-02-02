@@ -40,11 +40,9 @@
 					</div>	<!--header_top e -->	
 					
 		<!--************************************************************************************************************************************  -->			
-				
-					<div class="nav" style="left: 0px;">
-					    <div class="contents">
-					        <h1><a href="#" tabindex="-1"><img src="https://img.cgv.co.kr/R2014/images/common/logo/logoWhite.png" alt="로고넣기"></a></h1>
-					        <ul class="nav_menu">
+				    <div class="header_bottom">
+					    <div class="header_bot_btn"> 
+					        <ul class="btn_menu">
 					            <li>
 					                <h2><a href="#">영화</a></h2>
 					                <dl class="nav_overMenu" style="display: none;">
@@ -63,7 +61,7 @@
 					                </dl>
 					            </li>
 					            <li>
-					                <h2><a href="#"><strong>예매</strong></a></h2>
+					                <h2><a href="#">예매</a></h2>
 					                <dl class="nav_overMenu" style="display: none;">
 					                    <dt><h2>예매</h2></dt>
 					                    <dd><h3>빠른예매</h3></dd>
@@ -75,9 +73,9 @@
 					            <li>
 					                <h2><a href="#">스토어</a></h2>
 					                <dl class="nav_overMenu" style="display: none;">
-					                    <dt><h2>스토어</h2></dt>
+					                    <dt><h2><a href="#">스토어</a></h2></dt>
 					                    
-					                            <dd><h3>영화관람권</h3></dd>
+					                            <dd><h3>패키지</h3></dd>
 					                        
 					                            <dd><h3>기프트카드</h3></dd>
 					                        
@@ -101,37 +99,85 @@
 					                    <dd><h3>멤버십/CLUB</h3></dd>
 					                    <dd><h3>CGV 극장별</h3></dd>
 					                    <dd><h3>제휴할인</h3></dd>
-					                    <dd><h3>당첨자 발표</h3></dd>
-					                    <dd><h3>종료된 이벤트</h3></dd>
+					                    <dd><h3>당첨자</h3></dd>
+					                    <dd><h3>종료된</h3></dd>
 					                </dl>
 					            </li>
 					            <li>
 					                <h2><a href="#">혜택</a></h2>
 					                <dl class="nav_overMenu" style="display: none;">
 					                    <dt><h2>혜택</h2></dt>
-					                    <dd><h3>CGV 할인정보</h3></dd>
-					                    <dd><h3>CLUB 서비스</h3></dd>
-					                    <dd><h3>VIP 라운지</h3></dd>
+					                    <dd><h3>할인정보</h3></dd>
+					                    <dd><h3>서비스</h3></dd>
+					                    <dd><h3>라운지</h3></dd>
 					                </dl>
 					            </li>
 					        </ul>
-					        <div class="totalSearch_wrap">
+					        <div class="Search_bar">	<!--검색바-------->
 					            <label for="totalSearch">
 					                <input type="text" id="header_keyword" value="">
 					                <input type="hidden" id="header_ad_keyword" name="header_ad_keyword">
 					            </label>
 					            <button type="button" class="btn_totalSearch" id="btn_header_search">검색</button>
-					            <iframe src="//ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/main@Search_txt" width="0" height="0" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
-					           
 					        </div>
+		
 					    </div>
-					</div>					
-					
-			</div>				
-					
-
-
-
+					</div>
+			    </div>
+		
+						
+				<!--************************************************푸터************************************************** -->
+	
+	<footer>		<!--푸터시작  -->
+		<ul class="footer_list">		<!--푸터 윗부분 그냥 링크만 가능하게 했어요 -->
+		    <li><a href="#">회사소개</a></li>
+		    <li><a href="#">채용정보</a></li>
+		    <li><a href="#">광고/제휴/출점문의</a></li>
+		    <li><a href="#">이용약관</a></li>
+		    <li><a href="#">편성기준</a></li>
+		    <li><a href="#">개인정보처리방침</a></li>
+		    <li><a href="#">법적고지</a></li>
+		    <li><a href="#">이메일주소무단수집거부</a></li>
+		    <li><a href="#">윤리경영</a></li>
+	
+		</ul>
+		<ul class="company_wrap">		<!--하단 사업자와 주소 정보란인데 왼쪽 배치만하니까 너무 허전해서 그냥 가운데 배치했어요   -->
+		    <div class="company_info">	
+		        <h4>(04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)</h4>
+		        <dl class="company_info_list">		<!--h테그 넣으니까 띄어쓰기 난해해져서  원본사이트 수식참초함  -->
+		            <dt>대표이사</dt>
+		            <dd>허민회</dd>
+		            <dd>사업자등록번호</dd>
+		            <dd>104-81-45690</dd>
+		            <dd>통신판매업신고번호</dd>
+		          
+		        </dl>
+		        <dl class="company_info_list">
+		            <dt>호스팅사업자</dt>
+		            <dd>CJ올리브네트웍스</dd>
+		            <dt>개인정보보호 책임자</dt>
+		            <dd>심준범</dd>
+		            <dt>대표이메일</dt>
+		            <dd>gksruf1002@hanmail.net</dd>
+		        </dl>
+		        <p>© CJ CGV. All Rights Reserved</p>
+		    </div>
+		    
+		    
+		    <section>	<!--하단 검색바  -->
+		        <select id="familysite">
+		            <option value="1" class="familysiteTitle">계열사 바로가기</option>
+					<option value="2" class="familysiteTitle">아무곳 바로가기</option>
+					<option value="3" class="familysiteTitle">  제일제당</option>
+		        </select>
+		        <a href="#none" class="finish" onclick="">GO</a>
+		    </section>
+	
+		    
+		    
+		</ul>
+		<!-- footer e -->
+	</footer>
 
 
 </body>
