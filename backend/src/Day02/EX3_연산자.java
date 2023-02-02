@@ -1,5 +1,9 @@
 package Day02;
 
+import java.util.Scanner;
+
+import javax.print.attribute.SetOfIntegerSyntax;
+
 
 
 public class EX3_연산자 {
@@ -70,7 +74,21 @@ public class EX3_연산자 {
 		String 연결문자3="유재석"+10+20;	//문자열+숫자열+숫자열 => 문자열 "유재석1020"
 		String 연결문자4="유재석"+(10+20);	//유재석30
 		
+		Scanner scanner =new Scanner(System.in);
 		
+		//강사풀이
+		
+		/*
+		 * Scanner scanner=new Scanner(System.in); String 작성자 = scanner.next();
+		 * scanner.nextLine();
+		 * 
+		 * 
+		 * String 내용 = scanner.nextLine(); System.out.print("내용:");
+		 * 
+		 * 
+		 * String 날짜=scanner.next(); System.out.print("날짜:");
+		 */
+	
 		
 		
 		
