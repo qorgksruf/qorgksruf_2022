@@ -70,14 +70,22 @@
     line-height: 1.500em;
 }
 
+.btn_list li{
+	list-style: none;
+}
+
+
+
 .header_top .header_btn .btn_list {
     display: flex;
     align-items: center;
+    
 }
 
 .header_top .header_btn .btn_list li {
     margin-left: 44px;
     margin-top: 2px;
+    
 }
 
 .header_top .header_btn .btn_list a {
