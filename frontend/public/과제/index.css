@@ -1,8 +1,4 @@
-@charset "EUC-KR";
-
-
-
-/*°øÅë */
+/*ê³µí†µ */
  * {background-color:white;
  	 text-align:center;
  	 text-decoration: none;
@@ -10,20 +6,20 @@
  }
 
 
-/* ¸ÇÀ§ ±¤°í */
+/* ë§¨ìœ„ ê´‘ê³  */
 .cgv_ad_top{
 	background-color: #DEDEDE;
 	text-align: center;
 	
 }
 
-/*Çì´õ ÀüÃ¼±¸¿ª¼³Á¤  */
+/*í—¤ë” ì „ì²´êµ¬ì—­ì„¤ì •  */
 .header {
     position: relative;
     z-index: 101;
 }
 
-/* logo|| ±¤°í ·Î±×ÀÎ È¸¿ø°¡ÀÔ my_cgv °í°´¼¾ÅÍ   */
+/* logo|| ê´‘ê³  ë¡œê·¸ì¸ íšŒì›ê°€ì… my_cgv ê³ ê°ì„¼í„°   */
 .header_top {
     margin-bottom: 50px;
     background-color: #fff;
