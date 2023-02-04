@@ -173,10 +173,18 @@ position: relative;
 
 .wrap_search{
 	top: 20px;
+	
 }
 
+.tmffoa{
+	border-bottom-style: none;
+	border-top-style: none;
 
+}
 
+#ejdzm{
+	margin-top: 10px;
+}
 /*
 	footer
 */

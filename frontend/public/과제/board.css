@@ -1,0 +1,80 @@
+@charset "EUC-KR";
+
+a{	
+	text-decoration: none;
+	color:black;
+}
+
+
+
+.board li{
+  
+   list-style-type: none;
+   margin: 15px;
+   color: black;
+}
+
+.board {
+
+	border: solid 1px black; 
+	display:flex;
+	
+}
+
+.board div{
+	margin: 10px;	
+	left: 50px;
+}
+
+
+.board li:hover {
+	color:white;
+	background-color: red;
+}
+
+.regi{
+	background-color: black;
+	color:white;
+}
+
+
+
+.main_content{
+	border: solid 1px red; 	
+	margin: 10px;
+	text-decoration: none;
+	color:black;
+	margin-left: 10px;
+	
+}
+
+#list{
+	margin: 40px;
+ 	display: inline;
+}
+
+.banner{  display: flex; 
+		  margin: 0 auto;	
+		  background-color: #eeeeee;
+	
+}
+
+
+.banner div h5 {
+	margin-right: 10px; 
+	margin-left: 2px;
+	background-color: gray;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 20px;
+	
+}
+
+.banner div :hover{
+	background-color: red;
+	color: white;
+}
+
+
+
+
