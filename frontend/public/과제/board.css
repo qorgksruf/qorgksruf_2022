@@ -3,8 +3,15 @@
  * {background-color:white;
  	 text-align:left;
  	 text-decoration: none;
- 	
+ 	 font-family: 'SUIT-Regular'
  }
+ 
+ @font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 .gg{
 	text-decoration: none;
 	
@@ -47,9 +54,6 @@
 	text-align: center;
 }
 
-.main_content {
-	border: solid 1px red; 	
-}
 
 .main_content h4,h6 {
 	margin-left: 20px;
