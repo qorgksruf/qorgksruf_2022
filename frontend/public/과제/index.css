@@ -2,10 +2,16 @@
  * {background-color:white;
  	 text-align:left;
  	 text-decoration: none;
- 	 
+ 	 font-family: 'SUIT-Regular'
  }
 
 
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 /* 맨위 광고 */
 .cgv_ad_top{
 	background-color: #DEDEDE;
