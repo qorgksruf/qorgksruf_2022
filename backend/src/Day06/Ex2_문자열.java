@@ -51,7 +51,8 @@ public class Ex2_문자열 { // class s
 		// 문자열 관련된 api함수 
 		// 1. 158p. charAt( 인덱스 )
 		String ssn = "9506241230123";
-		char sex = ssn.charAt(6); System.out.println( sex );
+		char sex = ssn.charAt(6); 
+		System.out.println( sex );
 		if( sex == '1' || sex == '3' ) { System.out.println("남자");}
 		else { System.out.println("여자");}
 		
@@ -71,7 +72,7 @@ public class Ex2_문자열 { // class s
 		
 		// 4. 161p. subString( 인덱스 ) vs split( 기준문자 ) 
 		String ssn2 = "880815-1234567";
-		System.out.println( ssn2.substring( 7) ); // 7 인덱스 전 자르기 
+		System.out.println( ssn2.substring(7) ); // 7 인덱스 전 자르기 
 		System.out.println( ssn2.substring( 0 , 6 )); // 0~6인덱스 전까지		
 		
 		System.out.println( ssn2.split("-") ); // "-" 자르면 2조각/인덱스 배열 반환 
@@ -80,7 +81,7 @@ public class Ex2_문자열 { // class s
 		
 		String board = "1,자바 학습,참조 타입 String을 학습합니다. , 홍길동";
 		String[] tokens = board.split(",");	// , 기준으로 분리했을때 4조각/인덱스 --> 배열 반환
-		
+		 
 		System.out.println("번호 : " + tokens[0] );
 		System.out.println("제목 : " + tokens[1] );
 		System.out.println("내용 : " + tokens[2] );

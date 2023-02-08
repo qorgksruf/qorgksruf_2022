@@ -12,7 +12,7 @@ public class Ex3_문자열2 {
 			String input = scanner.nextLine()+"\n";			// 2. 입력받은 문자열을 변수에 저장 
 			// 2. 문자열 파일에 저장 [ 자바외 키보드/파일/네트워크 등등 통신할때 무조건 바이트단위 ]
 			FileOutputStream fout = new FileOutputStream("c:/java/test.txt" , true);
-			fout.write( input.getBytes() );
+			fout.write( input.getBytes() );		// 요게 텍스트파일에다가 글자를 쓰는 기능입니다..
 		}
 	}
 }
