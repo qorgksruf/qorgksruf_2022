@@ -19,6 +19,7 @@ public class Shindw {
 		
 		for (int i = 0; i < arr3.length; i++)  {
 			System.out.println(arr3[i]);
+			
 		}
 		
 		String arr4[] = {"pa", "풋팟퐁", "bogo"};

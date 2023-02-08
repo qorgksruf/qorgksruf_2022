@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.util.Scanner;
 
 public class Step3 { // class s // step3 : 입력된 데이터를 파일처리 [ 영구저장 ]
-	public static void main(String[] args) throws Exception { // main s  // 2. 예외처리 던지기
+	public static void main(String[] args) throws Exception { // main s  // 2. 예외처리 던지기d
 		Scanner scanner = new Scanner(System.in); // * 입력객체
 		while( true ) {
 			System.out.print(" 메뉴> 쓰기[-1]  나가기[-2]  : ");

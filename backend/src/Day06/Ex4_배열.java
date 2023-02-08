@@ -41,7 +41,7 @@ public class Ex4_배열 { // class s
 			System.out.println( arr1[i] );
 		}
 			// 3. 해당 인덱스에 데이터 넣기 
-		arr1[0] = 10;	arr1[1] = 20;	arr1[2] = 30; 
+		arr1[0] = 10;	arr1[1] = 20;	arr1[2] = 30;
 			// 4. 확인
 		for( int i = 0 ; i<arr1.length ; i++ ) {
 			System.out.println( arr1[i] );
