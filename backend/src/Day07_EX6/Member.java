@@ -1,4 +1,4 @@
-package Day07_ex6;
+package Day07_EX6;
 
 public class Member {
 

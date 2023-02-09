@@ -2,7 +2,7 @@ package Day07.Ex04;
 
 import java.util.Scanner;
 
-import Day07.Ex3.Member;
+
 
 public class 회원시스템객체 {
 	

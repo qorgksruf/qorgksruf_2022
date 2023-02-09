@@ -1,4 +1,4 @@
-package Day07_ex5;
+package Day07_EX5;
 
 import java.util.ArrayList;
 import java.util.Arrays;
