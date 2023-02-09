@@ -61,8 +61,10 @@ public class EX1_회원시스템_배열 {
 						memberList[i]=null;	//마지막인덱스에 null넣고 나가는거임
 						break;
 					}	
-						memberList[i]=memberList[i+1];	//다음 인덱스가 null이면 완전종료
-						if(memberList[i+1]==null)break;
+						
+					
+					memberList[i]=memberList[i+1];	//다음 인덱스가 null이면 완전종료
+					if(memberList[i+1]==null)break;
 					
 				}
 			}

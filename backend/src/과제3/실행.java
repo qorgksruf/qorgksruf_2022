@@ -89,9 +89,13 @@ public class 실행 {
 							
 						else {System.out.println("번호를다시 선택하세요");}
 					}	
-				}				
+				}else {
+					System.out.println("비밀번호가 일치하지 않습니다");
+				}
 					
-			}//while e			
+			}else {
+				System.out.println("아이디가 옳지 않습니다");
+			}
 	}//main e
 	
 	
