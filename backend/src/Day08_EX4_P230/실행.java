@@ -21,6 +21,8 @@ public class 실행 {
 		
 		myCalc.powerOff();
 		
-		myCalc.info();
+		
+		myCalc.info()
+		System.out.println(myCalc.info());
 	}//main e
 }//class e
