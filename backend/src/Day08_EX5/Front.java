@@ -20,9 +20,13 @@ public class Front {
 			print();
 			System.out.println("1.회원등록 2.회원삭제;;;");
 			int ch=scanner.nextInt();
-			if(ch==1) { signup();}
-			else if(ch==2) {delete();}
-			else {}
+			if(ch==1) { 
+				signup();
+			} else if(ch==2) {
+				delete();
+			} else {
+				
+			}
 		}//while e
 		
 	}//index e
