@@ -18,6 +18,7 @@ public class 실행 {
 		System.out.println(car3.toString());
 		
 		//3개의 ㅇ매개변수 생성자
+		
 
 		Car car2 =new Car("그랜저","검정",250);
 		System.out.println(car2.toString());

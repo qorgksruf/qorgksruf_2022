@@ -40,6 +40,7 @@ public class Mcontroller {
 	}
 	
 	
+	
 	// 3. 아이디 찾기 로직
 	public String findId( String name , String phone  ) {
 		for(Member m : memberDb) {
