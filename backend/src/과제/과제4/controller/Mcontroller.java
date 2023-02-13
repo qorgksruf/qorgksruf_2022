@@ -3,11 +3,14 @@ package 과제.과제4.controller;
 import java.util.ArrayList;
 
 import 과제.과제4.model.Member;
+import 과제.과제4.model.Board;
 
 // * 처리/제어 담당
 public class Mcontroller {
 	// * DB 대신할 [ 데이터 저장소 ]
 	ArrayList<Member> memberDb = new ArrayList<>();
+	
+	ArrayList<Board> boardDb = new ArrayList<>();
 	
 
 	
@@ -41,14 +44,13 @@ public class Mcontroller {
 	
 	
 	
+	
 	// 3. 아이디 찾기 로직
 	public String findId( String name , String phone  ) {
-		for(Member m : memberDb) {
-			if(m.name.equals(name) && m.phone.equals(phone)) {
-				return m.id;
-			}	
-		}//for e
-		for(int i=0; i<memberDb.size(); i++) {
+		/*
+		 * for(Member m : memberDb) { if(m.name.equals(name) && m.phone.equals(phone)) {
+		 * return m.id; } }//for e
+		 */		for(int i=0; i<memberDb.size(); i++) {
 			if(memberDb.get(i).name.equals(name)&& memberDb.get(i).phone.equals(phone)) {
 				return memberDb.get(i).id;
 			}
@@ -67,15 +69,34 @@ public class Mcontroller {
 		for(Member m : memberDb)  {
 			if(m.id.equals(id) && m.phone.equals(phone)) {
 				return m.pwd;
+				
 			}		
 			
 		}//for e
 		return null; //아이디 못 찾았다;;;;
 	}//함수 끝
 	
+	// 5. 글출력 로직
+	public String write(String title, String content, String writer) {
+		
+		Board board = new Board(title, content, writer);
+		
+		boardDb.add(board);
+		
+		return "게시글이 등록되었습니다. ";
+	}
+
+	public String remove(int fixno) {
+		if (fixno < boardDb.size() && fixno >= 0) {
+			boardDb.remove(fixno);
+			return "해당 글이 삭제되었습니다.";
+		} else {
+			return "수정할 인덱스가 맞지 않습니다.";
+		}
+	
+	}
 	
 }
-
 
 
 

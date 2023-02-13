@@ -7,18 +7,21 @@ public class Member {
 	public String name;
 	public String phone;
 	
-
 	// 2. 생성자
 	public Member() { }
+
+	//id, pwd, name, phone
 	public Member(String id, String pwd, String name, String phone) {
-		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.phone = phone;
 
 	}
+
 	
 	
 	// 3. 메소드 
+	
+	
 }

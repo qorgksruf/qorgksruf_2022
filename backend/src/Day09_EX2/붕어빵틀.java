@@ -35,8 +35,8 @@ import java.util.ArrayList;
 public class 붕어빵틀 {
 	//1.필드
 	
-	String 재료1;
-	String 재료2;
+	String 붕어빵재료1;
+	String 붕어빵재료2;
 	
 	//2.생성자
 		//1)기본생성자
@@ -45,14 +45,14 @@ public class 붕어빵틀 {
 	
 		//2) 필드1개 생성자
 	붕어빵틀(String 재료1){
-		this.재료1=재료1;
+		붕어빵재료1=재료1;
 	}
 		
 	
 		//3) 필드2개 생성자
 	붕어빵틀(String 재료1, String 재료2){
-		this.재료1=재료1;
-		this.재료2=재료2;
+		붕어빵재료1=재료1;
+		붕어빵재료2=재료2;
 	}
 	
 	//3.메소드
@@ -60,7 +60,7 @@ public class 붕어빵틀 {
 	//	이것의 역활은 검사, 초기화등
 	@Override
 	public String toString() {
-		return "붕어빵틀 [재료1=" + 재료1 + ", 재료2=" + 재료2 + "]";
+		return "붕어빵틀 [재료1=" + 붕어빵재료1 + ", 재료2=" + 붕어빵재료2 + "]";
 	} 
 	
 	
@@ -71,8 +71,8 @@ public class 붕어빵틀 {
 	
 		//3.붕어빵속 변경	//리턴타입없다 인수2개
 	void 변경(String 재료1, String 재료2) {
-		this.재료1=재료1;
-		this.재료2=재료2;
+		붕어빵재료1=재료1;
+		붕어빵재료2=재료2;
 		System.out.println("붕어빵 속 변경되었습니다");
 	}
 	

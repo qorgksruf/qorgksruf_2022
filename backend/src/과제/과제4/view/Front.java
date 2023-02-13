@@ -12,7 +12,9 @@ public class Front {
 	
 	
 	// 1. 메인페이지 
+	
 	public void index() {
+		
 		while(true) {
 			System.out.print("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 : ");
 			int ch = scanner.nextInt();
@@ -53,6 +55,8 @@ public class Front {
 					mc.login( id , pwd );		
 			if(result>=0) {
 				System.out.println("로그인 성공");
+				
+				print();
 			}
 				//게시판으로 이동
 			 else if(result==-1) {
@@ -89,25 +93,61 @@ public class Front {
 	void findPassword() {
 		System.out.println("아이디 입력"); String id=scanner.next();
 		System.out.println("전화번호 입력"); String phone=scanner.next();
-		int result=
-				mc.findPassword(id,phone);
-		if(result>=0) {
+		String result=
+				mc.findPassword(id, phone);
+		if(!result.equals(null)) {
 			System.out.println("비밀번호 반환해드릴게요");
 			System.out.println("회원의 비밀번호:" + result);
-		}else if(result<=-3) {
-			System.out.println("아이디와 전화번호를 확인하세요");
-		}else {
+		} else {
 			System.out.println("아이디와 전화번호를 확인하세요");
 		}
 	
 		
 	}
 	
-	//로그인 성공시 Board 클래스 출력하기
 	
 	
 	
 	
+	
+	//로그인 성공화면
+	
+	void print() {
+		while(true) {
+			System.out.println("===============커뮤니티=============");
+			System.out.println("번호\t조회수\t작성자\t제목");
+			System.out.println("메뉴>>1.글쓰기 2.글수정 3.로그아웃");
+			
+			int ch=scanner.nextInt();
+			if(ch==1) {//글쓰기
+				System.out.println("----------- 글 쓰기 ---------------");
+				System.out.println("제목을입력하세요;;");
+				String title=scanner.next();//제목
+				System.out.println("내용을입력하세요;;");
+				String content=scanner.next();//내용
+				System.out.println("작성자이름입력하세요;;");
+				String writer=scanner.next();//여기 모르겠음.......
+				String result=
+						mc.write(title,content,writer);
+				
+				System.out.println(result);
+				
+				break;
+				
+			}else if(ch==2) {//글수정
+				System.out.println("삭제할 인덱스를 입력하세요");
+				int fixno=scanner.nextInt();
+				
+				String resultRemove = mc.remove(fixno);
+				
+				System.out.println(resultRemove);
+				
+			}else if(ch==3) {//로그아웃시
+				index();
+				break;
+			}
+		}
+	}
 	
 	
 	
