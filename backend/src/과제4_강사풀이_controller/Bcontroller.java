@@ -8,20 +8,29 @@ import 과제4_강사풀이_Model.Board;
 
 public class Bcontroller {
 
+	//싱글톤 목적
+	private static Bcontroller bc=new Bcontroller();
+	private Bcontroller() {}
+	public static Bcontroller getInstance() {return bc;}
+	
+	
+	
 	private ArrayList<Board>boardDb=new ArrayList<>();
+	
 	//글쓰기
 	public boolean write(String title, String content) {
 		//유효성검사 [로그인했는지] 이거때매 controller에 싱글턴 맨위 세줄 만들고 갖고옴
-		if(Mcontroller.getInstance().logSession==null) {
+		if(Mcontroller.getInstance().getLogSession()==null) {
+			System.out.println(Mcontroller.getInstance().getLogSession() );
 			return false; //로그인이 안되어있는경우 false
 		}
 			//로그인이되면 DB저장
 				//1.객체화[글작성한거임: 입력받은 데이터2개, 초기값0, 로그인한 회원 객체=글쓴이]
-		Board board= new Board( title, content, 0, Mcontroller.getInstance().logSession); 
+		Board board= new Board( title, content, 0, Mcontroller.getInstance().getLogSession()); 
 				//2.멤버객체에 내가 쓴글 등록
 		boardDb.add(board);
 		
-		Mcontroller.getInstance().logSession.getBoardList().add(board);
+		Mcontroller.getInstance().getLogSession().getBoardList().add(board);
 			
 		return true;
 	}
@@ -35,7 +44,8 @@ public class Bcontroller {
 	
 	//글 상세
 	public Board getBoard(int bno) {
-		
+		boardDb.get(bno).setView(
+				boardDb.get(bno).getView()+1);
 		return boardDb.get(bno); //인수로 전달받은 인덱스의 게시물을 반환함
 	}
 	
@@ -43,6 +53,7 @@ public class Bcontroller {
 	public boolean delete(int bno) {
 		boardDb.remove(bno);	 //인수로 전달받은 인덱스의 게시물 삭제
 		return true;
+		
 	}
 	
 	

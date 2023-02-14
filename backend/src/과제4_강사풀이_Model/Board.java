@@ -6,6 +6,7 @@ package 과제4_강사풀이_Model;
  * 	1.한명의 회원이 글 작성한다-> object
  *  2.회원은 여러개의 글을 작성한다 -> ARRAY
  * 즉 member페이지는 여러명이 작성하고 board는 한명이 작성함 
+ * 
  * */
 
 public class Board {

@@ -27,7 +27,11 @@ public class Mcontroller {
 	ArrayList<과제4_강사풀이_Model.Member>MemberDb=new ArrayList<>();
 	//로그인 한 회원의 객체를 저장 [*동시접속 문제점 발생!!]
 		//사용목적: 페이지가 바뀌더라도 정보저장 즉 메소드가 종료되더라도 정보는 저장
-	Member logSession = null; //회원객체를 logSession가 저장하는거임~!!!!! 개인정보가 있는건 session
+	private Member logSession = null; //회원객체를 logSession가 저장하는거임~!!!!! 개인정보가 있는건 session
+	
+	public Member getLogSession() {
+		return logSession;
+	}
 	
 	
 	//회원가입 처리
@@ -52,7 +56,7 @@ public class Mcontroller {
 			if(MemberDb.get(i).getId().equals(id)) {//i번쨰 인덱스의 아이디와 입력받은 아이디 같으면
 				if(MemberDb.get(i).getPwd().equals(pw)) {
 					//i번째 인덱스의 비밀번호와 입력받은 비밀번호같으면 로그인 성공 -> 흔적을 남겨야함
-					Member logSession=MemberDb.get(i); //로그인 성공한 회원 객체를 필드에 저장함 얘는 지역변수가 아니라 위 필드에 저장했으니 메소드 끝나도 정보는 남는애임
+				 logSession=MemberDb.get(i); //로그인 성공한 회원 객체를 필드에 저장함 얘는 지역변수가 아니라 위 필드에 저장했으니 메소드 끝나도 정보는 남는애임
 					return i;
 				}else {
 					return -1;
