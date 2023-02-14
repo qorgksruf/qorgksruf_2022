@@ -28,25 +28,33 @@ public class Bcontroller {
 	
 	//글출력-> 전체니까 ArrayList
 	public ArrayList<Board>getList(){
-		return null;
+		
+		return boardDb;
 	}
 	
 	
 	//글 상세
 	public Board getBoard(int bno) {
-		return null;
+		
+		return boardDb.get(bno); //인수로 전달받은 인덱스의 게시물을 반환함
 	}
 	
 	//글삭제 
 	public boolean delete(int bno) {
+		boardDb.remove(bno);	 //인수로 전달받은 인덱스의 게시물 삭제
 		return true;
 	}
 	
 	
 	//글수정->새로 입력될 제목,내용 쓰기
 	public boolean update(int bno, String title, String content) {
+		boardDb.get(bno).setTitle(title); //인수로 전달받은 인덱스의 게시물 제목 수정
+		boardDb.get(bno).setTitle(content);//인수로 전달받은 인덱스의 게시물 내용수정
 		return true;
 	}
+	
+	
+	
 	
 	
 }
