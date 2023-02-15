@@ -154,8 +154,26 @@ public class Front {
 			String content = scanner.nextLine();
 			
 			String id =mc.findwriter(i);
+			String result
+					=bc.savePost(title, content, id);
+			
+			if(result==null) {
+				System.out.println(id +"님의 글이 작성되었습니다");
+			}
 		}
 		
+		
+		//게시물보기
+		void viewPost(String writer) {
+			String id=writer;
+			System.out.println("열람할 글 번호 입력");
+			int ch=scanner.nextInt();
+			
+			Board post = bc.viewPost(ch, id);
+			
+			
+			
+		}
 	
 		
 		
