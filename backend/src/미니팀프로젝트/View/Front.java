@@ -5,10 +5,10 @@ import java.util.Scanner;
 import 미니팀프로젝트.Controller.Controller;
 
 public class Front {
-	Scanner scanner=new Scanner(System.in);
+	static	Scanner scanner=new Scanner(System.in);
 
 	
-	public void index(){
+	public static void index(){
 		System.out.println("이름입력하세요");
 		String id = scanner.next();
 		System.out.print("비밀번호 : ");
