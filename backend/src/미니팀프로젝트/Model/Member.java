@@ -12,6 +12,27 @@ public class Member {
 	}
 
 
+	
+	
+	
+	
+	
+	
+
+	public Member(String name, String pw, String phone) {
+		super();
+		this.name = name;
+		this.pw = pw;
+		this.phone = phone;
+	}
+
+
+
+
+
+
+
+
 
 	public Member(String name, String pw, String phone, String snumber) {
 		this.name = name;
@@ -21,13 +42,11 @@ public class Member {
 	}
 	
 	
-	public regi() {
-		System.out.println("독서실이용이 등록되었습니다");
-		
-		
-		
-		
-	}
+
+	
+	
+	
+	
 	
 	
 	
