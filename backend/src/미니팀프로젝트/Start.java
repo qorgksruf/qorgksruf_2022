@@ -10,5 +10,5 @@ public class Start {
 		front.index();
 		
 		
-	}
+	}//start 끝
 }

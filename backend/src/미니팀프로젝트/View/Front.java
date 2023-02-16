@@ -19,7 +19,7 @@ public class Front {
 		String phone = scanner.next();
 		
 		int result 
-			= c.signup(id, pw, phone);
+			= c.signup(id, pw, phone); 
 		if(result==1) {
 			System.err.println("[알림]회원가입성공");
 		}
