@@ -1,1 +1,0 @@
-package 과제7.interface예시2;

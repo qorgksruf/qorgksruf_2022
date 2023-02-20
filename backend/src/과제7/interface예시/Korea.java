@@ -1,4 +1,4 @@
-package 과제7.interface예시2;
+package 과제7.interface예시;
 
 public class Korea implements Cook{
 

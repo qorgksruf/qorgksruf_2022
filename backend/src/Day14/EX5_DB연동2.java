@@ -13,7 +13,7 @@ public class EX5_DB연동2 {
 		
 		Scanner scanner = new Scanner(System.in);
 		Connection conn = null ; // 여러 if{} 안에서 사용할려고 
-		while( true ) {
+
 			 try { // 1. 예외 발생할것 같은 코드 [ 예상:nextInt() 인데 문자열 입력시 예외 발생 ]
 				 System.out.print( "1.DB연결 2.SQL구문 삽입 3.매개변수 구문 삽입 : ");
 				 int ch = scanner.nextInt();
