@@ -69,7 +69,7 @@ public int signup(Member m) {
 					System.out.println("사용자 비번 입력;;;");
 					String c_pwd=scanner.next();
 					
-					if(c_memberDb.get(chMenu).state=true) {
+					if(c_memberDb.get(chMenu).state==true) {	// c_memberDb.get(2).state
 						System.out.println("컴퓨터 사용가능합니다");
 						c_memberDb.get(chMenu).state=false;
 						System.out.println("컴퓨터 사용가능여부:"+ ( c_memberDb.get(chMenu).state ?"사용가능":"사용중")+ c_memberDb.get(chMenu).c_name+"님 수고하셨습니다" );
