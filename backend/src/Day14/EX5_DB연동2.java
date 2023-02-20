@@ -50,10 +50,10 @@ public class EX5_DB연동2 {
 				 }
 				 
 			 }catch (Exception e) {
-				 System.out.println("알수없음"+e);
+				 System.out.println("DB 연결 후 다시실행"+e);
 			 }
 			 
-		 }
+		 }//while e
 	}
 }
 
