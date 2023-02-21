@@ -6,7 +6,7 @@ import java.util.Properties;
 
 
 public class System클래스 {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception { 
 		
 		//517
 		long time1 = System.nanoTime();	//현재시간을 나노초로 표현
@@ -15,7 +15,7 @@ public class System클래스 {
 		for(int i=1; i<=10000000; i++) {
 			sum +=i;	//i를 sum에 누적 합계 더하기
 		}
-		long time2 = System.nanoTime();
+		long time2 = System.nanoTime(); 
 		System.out.println((time2-time1) + "나노초가 소요 되었습니다");
 	
 	
