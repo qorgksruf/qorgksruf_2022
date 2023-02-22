@@ -23,7 +23,11 @@ public class Controller {
 		return ProductDao.getInstance().getProductAll();
 	}
 	
-
+	// 사용자용 전체 메뉴 조회
+	public ArrayList<ProductDto>getProductAll_Customer(){
+		return ProductDao.getInstance().getProductAll_Customer();
+	}
+	
 
 	
 	//제품이름 가격 수정삭제
@@ -41,5 +45,7 @@ public class Controller {
 		return ProductDao.getInstance().saveupdate(pno, pstock);
 	}
 	
+	
+
 
 }

@@ -18,7 +18,7 @@ public class ProductDao {
 	private static ProductDao dao = new ProductDao();
 	private ProductDao() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/과제11","root","1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/day16","root","1234");
 		}catch (Exception e) { System.out.println( e ); }
 	}
 	public static ProductDao getInstance() { return dao; }
@@ -63,7 +63,33 @@ public class ProductDao {
 		return null;
 	}
 	
+	// 사용자용 조회 (전체 메뉴)
+	public ArrayList <ProductDto> getProductAll_Customer(){
+		ArrayList <ProductDto> list = new ArrayList<>();
+		String sql = "SELECT PNO"
+				+ "	  		 ,PNAME"
+				+ "       	 ,PPRICE"
+				+ "       	 ,IF(PSTOCK = 0, '재고부족', '판매중') AS PSTATE"
+				+ "     FROM PRODUCT;";
+		try {
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+			ProductDto dto = new ProductDto(
+					rs.getInt(1), rs.getString(2),rs.getInt(3),rs.getString(4));
+					list.add(dto);
+				
+			}
+			return list;
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
 	
+	
+
+
 
 	
 	//제품수정[이름,가격]
@@ -139,10 +165,5 @@ public class ProductDao {
 		}
 		
 	}
-	
-	
-	
-	
-	
 }
 

@@ -9,28 +9,23 @@ public class View {
 	public static View getInstance() {
 		return view;
 	}
-
-	boolean pstate; 
 	
 	private Scanner scanner = new Scanner(System.in);
-	
-	
-	
+
 	
 	
 	public void choice() {
 		System.out.println("1.관리자 2.사용자");
 		int ch=scanner.nextInt();
-			if(ch==1) {
-				index();
-			}else if(ch==2) {
-				
-			}
+		if(ch==1) {
+			index();
+		} else if (ch==2) {
+			index_Customer();
+		}
 	}
 	
 
 
-	
 
 	public void index() {
 		while(true) {
@@ -56,6 +51,41 @@ public class View {
 					
 		}//while e
 	}//index e
+	
+	public void index_Customer() {
+		while(true) {
+			try {	
+				System.out.println(" 1.출력 ");
+				
+				int ch = scanner.nextInt();
+				
+				if(ch==1) {
+					getProductAll_Customer();
+					System.out.println("0: 결제      1:제품번호 입력받기 ");
+					
+					int customer_inputNum = scanner.nextInt();
+					
+					if(customer_inputNum == 1) {
+						int pno = scanner.nextInt();
+
+						boolean result= 
+								Controller.getInstance().getProductAll_Customer(pno);
+						if(result=true) {
+							System.out.println("");
+						}else {
+							
+						}
+					}
+				}
+			} catch (Exception e) {
+				scanner = new Scanner(System.in);	//입력한 값 초기화
+				System.out.println("프로그램 내 오류발생");
+				System.out.println(e);
+			}
+		}
+	}
+	
+	
 	
 	//제품등록
 	public void regist() {
@@ -90,6 +120,17 @@ public class View {
 
 	}
 	
+	//모둔 제품출력 (getProductAll_Customer)
+	public void getProductAll_Customer() {
+		System.out.printf("%3s \t %10s \t %10s \t %10s \n" , "번호" , "제품명" , "가격", "상태");
+		ArrayList<ProductDto> result = Controller.getInstance().getProductAll_Customer();	
+		
+		for(ProductDto dto : result) {	//변형된 리스트를 반복문돌림
+			System.out.printf("%3d \t %10s \t %10d \t %10s \n" , dto.getPno() , dto.getPname() , dto.getPprice() , dto.getPstate() );
+		}
+	}
+	
+
 	
 	//제품이름 가격변경
 	public void update() {

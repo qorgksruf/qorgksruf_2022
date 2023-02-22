@@ -2,15 +2,16 @@ package 과제11;
 
 public class ProductDto {
 	
-	private int  pno;
-    private String  pname;
-    private int pprice;
-    private int  pstock;
-    private boolean pstate;
+	private int  		pno;
+    private String  	pname;
+    private int 		pprice;
+    private int  		pstock;
+    private String  	pstate;
     
-    
-    public ProductDto() {}
-
+	public ProductDto() {
+		
+	}
+	
 	public ProductDto(int pno, String pname, int pprice, int pstock) {
 		super();
 		this.pno = pno;
@@ -19,22 +20,17 @@ public class ProductDto {
 		this.pstock = pstock;
 	}
 	
-	public ProductDto(int pno, String pname, int pprice, int pstock, boolean pstate) {
+	public ProductDto (int pno, String pname, int pprice, String pstate) {
 		super();
 		this.pno = pno;
 		this.pname = pname;
 		this.pprice = pprice;
-		this.pstock = pstock;
-		this.pstate=pstate;
+		this.pstate = pstate;
 	}
 	
-	
-
-
 	@Override
 	public String toString() {
-		return "ProductDto [pno=" + pno + ", pname=" + pname + ", pprice=" + pprice + ", pstock=" + pstock + ", pstate="
-				+ pstate + "]";
+		return "ProductDto [pno=" + pno + ", pname=" + pname + ", pprice=" + pprice + ", pstock=" + pstock + "]";
 	}
 
 	public int getPno() {
@@ -68,20 +64,15 @@ public class ProductDto {
 	public void setPstock(int pstock) {
 		this.pstock = pstock;
 	}
-
-	public ProductDto(boolean pstate) {
-		this.pstate = pstate;
-	}
-
-	public boolean isPstate() {
+	
+	// 상태
+	public String getPstate() {
 		return pstate;
 	}
 
-	public void setPstate(boolean pstate) {
+	public void setPstate(String pstate) {
 		this.pstate = pstate;
 	}
-    
-	
 	
 	
 	
