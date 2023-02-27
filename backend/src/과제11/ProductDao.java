@@ -18,7 +18,7 @@ public class ProductDao {
 	private static ProductDao dao = new ProductDao();
 	private ProductDao() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/day16","root","1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Myway","root","1234");
 		}catch (Exception e) { System.out.println( e ); }
 	}
 	public static ProductDao getInstance() { return dao; }
