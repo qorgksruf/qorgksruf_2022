@@ -6,10 +6,10 @@ import Day20.gallery.Controller.MController;
 import MVC연습.Controller.Mcontroller;
 
 public class indexView {
-	private static indexView dao = new indexView();
+	private static indexView indexview = new indexView();
 	private indexView() { }
 	public static indexView getInstance( ) {
-		return dao;
+		return indexview;
 	}
 	
 	
@@ -74,10 +74,16 @@ public class indexView {
 		if(result==true) {
 			System.out.println("로그인에성공하였습니다");	
 			//게시물 초기메뉴로이동 BoardView페이지로 이동 
+			BoardView.getInstance().index();
 		}else if(result==false) {
 			System.out.println("아이디와 패스와드가 일치하지 않습니다");
 		}
 	}
+	
+	
+	
+	
+	
 	
 	
 }//class e

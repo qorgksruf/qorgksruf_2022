@@ -4,11 +4,21 @@ import Day20.gallery.Model.Dao.MemberDao;
 import Day20.gallery.Model.Dto.MemberDto;
 
 public class MController {
-	private static MController dao = new MController();
+	private static MController mcontroller = new MController();
 	private MController() { }
 	public static MController getInstance( ) {
-		return dao;
+		return mcontroller;
 	}
+	//로그인세션
+	private int logSession= 0;//로그인함 이보다 크면 로그인 안함 즉 여기에 회원번호 담기
+	public void setLogSession(int logSession) {
+		this.logSession = logSession;
+	}
+	//getter 만듬
+	public int getLogSession() {
+		return logSession;
+	}	
+	
 	
 	//회원가입 처리
 	public int signup(String mid, 
@@ -28,12 +38,8 @@ public class MController {
 	
 	}
 
-	private int logSession= 0;//로그인함 이보다 크면 로그인 안함 즉 여기에 회원번호 담기
-	
-	//getter 만듬
-	public int getLogSession() {
-		return logSession;
-	}
+
+
 
 	//로그인 처리
 	public boolean login(String mid, String mpw) {
