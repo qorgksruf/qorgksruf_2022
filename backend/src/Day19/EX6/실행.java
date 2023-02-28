@@ -6,8 +6,11 @@ public class 실행 {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
+		
+		boolean musicState = false; 	//음악재생 여부
+		boolean movieState = false;		//양화재생 상태
+		
 
-	
 		Music music = new Music();	//음악스레드
 		Movie movie = new Movie();	//영화스레드
 
