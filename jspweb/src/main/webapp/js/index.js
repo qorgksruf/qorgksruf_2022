@@ -1,72 +1,114 @@
-alert('js파일열림')
-//js 함수
-//function 함수명 (매개변수){실행코드 }
-
-function 예제1(){
-
+// JS 함수 
+// function 함수명 ( 매개변수 ){ 실행코드 }
+function Ex1( ){
 	let data = document.querySelector('.inputdata').value;
-	console.log(data);
+	console.log( data );
 	
 	$.ajax({
-		url: "http://localhost:8080/jspweb/indextest",	//통신할 서블릿 주소
-		method:"post" ,	//HTTP 메소드
-		data : {"data" : data},	//데이터보내기 "data"라는 이름으로 위의 입력받은 데이터를 받는다
-		sucess : function(result){
-			console.log(result);
-		}//데이터받기
+		url : "/jspweb/Ex1" ,		// 통신할 서블릿 주소 
+		method : "post" , 								// HTTP 메소드 
+		data : { "data" : data } , 						// 데이터 보내기 
+		success : function(result){   					// 데이터 받기 
+			console.log( result );
+			Ex2();
+		}
 	});
+}
+//
+Ex2( ); // 페이지 열리면 데이터호출 
+function Ex2(){
+	$.ajax({
+		url : '/jspweb/Ex1' ,
+		method: "get" , 
+		// data : { } , 
+		success : function(result){
+			console.log( result );
+			document.querySelector('.ex2box').innerHTML = result;
+		}
+	 });
+}
+
+
+
+
+
+/*과제1*/
+function Ex3( ){
+	let data1 = document.querySelector('.inputdata1').value;
+	console.log(data1);
+	$.ajax({
+		url : "/jspweb/Ex2" ,		
+		method : "post" , 								
+		data : { "data1" : data1 } , 						 
+		success : function(result){   					
+			console.log( result );
+			Ex4();
+		}
+	});		
+}
+
+
+Ex4();
+function Ex4(){
+	$.ajax({
+		url : '/jspweb/Ex2' ,
+		method: "get" , 
+		success : function(result){
+			console.log( result );
+			document.querySelector('.ex3box').innerHTML = result;
+		}
+	 });	
 	
 	
-	//js --> 서블릿 이동
-	//0.$ : jquery 표현식
-	//1.ajax 매소드 사용 : $.ajax({ });
-	//2.ajax 매개변수 [속성:객채형태]	: { }--> $.ajax({ })
+}
+
 	
-	
-	//3.속성
-		//1.url : 통신할 경로 [서블릿 (클래스)주소: "/jspweb/(/indextest)" ]
-		//2.method : http 메소드방식
-		//3.data : 통신할떄 보낼 데이터
-		//4.success : 통신 후 응답
-	
-		
-		/* 프로젝트명 어쩌구 힘들면 그냥
-		1방법 url:"http://localhost:8080/jspweb/indextest"
-		2방법 url:"/jspweb/indextest"
-		
-		/*메소드 : http 메소드방식 
-			get
-			post
-		*/ 
-		/*
-			data : 통신할때 데이터 보내기 
-				js 객체령태 : {매개변수명1:데이터, 매개변수명 2: 데이터ㅏ }
-		*/
-		/*
-			sucess : 통신후 응답 데이터 받기 
-				1.sucess : function(매개변수){}
-		*/
-		
-		
-	//여기에 속성4가지 대입
-	/* $.ajax({
-			url:"", 
-			method: "",
-			data: {매개변수명 : 데이터},
-			success : function(result){ 
-			
-			}	
+	// JS --> 서블릿 이동 
+	// 0. $ : jqeury 표현식 [ jqery 라이브러리 필요 ]
+	// 1. ajax 메소드 사용 : $.ajax( );
+	// 2. ajax 매개변수[속성:객체형태] : {  }	-- >  $.ajax( {  })
+	// 3. 속성 
+		// 1. url : 통신할 경로[ 서블릿(클래스) 주소 : /프로젝트명[@WebServlet]("/Indextest") ]
+			/*
+				url : "http://localhost:8080/jspweb/Indextest" 
+				url : "http://192.168.17.96:8080/jspweb/Indextest"
+				url : "/jspweb/Indextest"
+			*/
+		// 2. method : http 메소드방식
+			/*
+				get	
+				post 
+			*/
+		// 3. data : 통신할때 데이터 보내기 
+			/*
+				js객체 형태 : { 매개변수명1 : 데이터 , 매개변수명2 : 데이터 ~~  }
+			*/
+		// 4. success : 통신후 응답 데이터 받기 	
+			/*
+				1. success : function( 매개변수 ){}
+				2. success : ( 매개변수 ) => { }
+			*/ 
+	/* 
+		$.ajax({ 
+			url : "" , 
+			method : "" , 
+			data : { 매개변수명 : 데이터 } , 
+			success : function( result ){
+				
+			}
 		});
 	*/
 	
-}
-	//documemt :미리 만들어진 DOM 객체	
-	//1.queryselector (식별자):tag 1개 -> 변수/객체에 저장
-		//documemt.queryselector('.class')
-		//documemt.queryselector('#id')
-		//documemt.queryselector(.'tagname[name="namename"]')
-	//2.queryselectorAll(식별자) : tag 여러개 -? 배열/리스크 에 저장
 	
-	//queryselector().속성명
-		//1.queryselector().value : input ,select ,textarta [div x table x]
-		//queryselector().innerHTML: div,span ,td 등
+
+	// document : 미리 만들어진 DOM객체
+		// 1. querySelector( 식별자 ) : tag 1개  -> 변수/객체 에 저장 
+			// 1. document.querySelector('.classname')
+			// 2. document.querySelector('#idname')
+			// 3. document.querySelector('tagname[name="namename"]')
+		// 2. querySelectorAll( 식별자 ) : tag 여러개	-> 배열/리스트 에 저장
+		
+		// 3. querySelector().속성명
+			// 1.   querySelector().value		: input , select , textarea [ div x table x ]
+			// 2.   querySelector().innerHTML	: div , span , td 등등
+			
