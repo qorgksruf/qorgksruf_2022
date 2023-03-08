@@ -38,16 +38,18 @@ function idcheck(){	//onkeuup : 키 누륵도 때었을때
 	console.log(midj.test(mid)) 
 	if(midj.test(mid)){	//정규표현식 패턴이 true이면
 	
+		console.log("mid ::: " + mid)
+	
 	//아이디 중복검사 [js->서블릿->dao 에게 해당 아이디 검색 select ]
 		
 		$.ajax({
 			url:"/jspweb/mconfirm",
 			method:"get",
 			data:{ "mid" : mid },
-			sucess:(r)=>{
-				console.log('ajax통신');
+			success:(r)=>{
+				console.log("ajax통신");
 				console.log(r)
-				if(r=='true'){
+				if(r=="true"){
 					document.querySelector('.idcheckconfirm').innerHTML='사용 중인 아이디입니다';
 				}else{
 					document.querySelector('.idcheckconfirm').innerHTML='사용 가능한 아이디';
@@ -55,7 +57,7 @@ function idcheck(){	//onkeuup : 키 누륵도 때었을때
 			}
 			
 		})
-	
+
 	}else{	//정규표현식 패턴이 false일때마다
 		document.querySelector('.idcheckconfirm').innerHTML = '영소문자+숫자 조합 5~30사이로 입력해주세요'
 	}
