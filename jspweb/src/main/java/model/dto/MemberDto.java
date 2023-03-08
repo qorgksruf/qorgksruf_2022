@@ -4,7 +4,7 @@ public class MemberDto {
 	private int mno;
 	private String mid;
 	private String mpwd;
-	private String ming;
+	private String mimg;
 	private String memail;
 	
 	public MemberDto() {
@@ -16,13 +16,13 @@ public class MemberDto {
 		this.mno = mno;
 		this.mid = mid;
 		this.mpwd = mpw;
-		this.ming = ming;
+		this.mimg = ming;
 		this.memail = memail;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpw=" + mpwd + ", ming=" + ming + ", memail=" + memail
+		return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpw=" + mpwd + ", ming=" + mimg + ", memail=" + memail
 				+ "]";
 	}
 
@@ -51,11 +51,11 @@ public class MemberDto {
 	}
 
 	public String getMing() {
-		return ming;
+		return mimg;
 	}
 
 	public void setMing(String ming) {
-		this.ming = ming;
+		this.mimg = ming;
 	}
 
 	public String getMemail() {
