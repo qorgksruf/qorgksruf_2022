@@ -26,7 +26,7 @@ function getmemberList(){
 					html +=`						
 						<tr>
 							<td> ${o.mno} </td>
-							<td><img src="/jspweb/member/pimg/${o.mimg==null ? 'default.webp' : o.mimg }" width="100%"> </td>
+							<td><img src="/jspweb/member/pimg/${o.ming == null ? 'default.webp' : o.ming}" width="100%"> </td>
 							<td>${o.mid} </td>
 							<td> ${o.memail}</td>
 							<td> </td>

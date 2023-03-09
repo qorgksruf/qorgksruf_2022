@@ -11,18 +11,18 @@ public class MemberDto {
 		super();
 	}
 
-	public MemberDto(int mno, String mid, String mpw, String ming, String memail) {
+	public MemberDto(int mno, String mid, String mpw, String mimg, String memail) {
 		super();
 		this.mno = mno;
 		this.mid = mid;
 		this.mpwd = mpw;
-		this.mimg = ming;
+		this.mimg = mimg;
 		this.memail = memail;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpw=" + mpwd + ", ming=" + mimg + ", memail=" + memail
+		return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpw=" + mpwd + ", mimg=" + mimg + ", memail=" + memail
 				+ "]";
 	}
 

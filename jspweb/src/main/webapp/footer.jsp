@@ -6,11 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>	
+<body>
 
-	<%@ include file ="/header.jsp"%>	<!--jsp 페이지 포함 -->
-	<h3>대문입니다</h3>
-	<%@include file="/footer.jsp" %>
+	<h3> 푸터입니다 </h3>
+
 
 </body>
 </html>

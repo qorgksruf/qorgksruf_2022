@@ -1,1 +1,11 @@
 @charset "UTF-8";
+
+
+/*해더 css*/
+/*해더 로그인 프로필*/
+.hpimg{
+	width: 50px;
+	height: 30px;
+	border: solid 1px #e8e8e8;
+	border-radius: 50%;	
+}
