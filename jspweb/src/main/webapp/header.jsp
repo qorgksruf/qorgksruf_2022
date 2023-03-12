@@ -12,8 +12,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<!-- 모든페이지 공통 넣어주기  -->
 	<link href="/jspweb/css/index.css" rel="stylesheet">
-	<!-- css경로 -->
-	<link href="/jspweb/css/signup.css" rel="stylesheet">
+
 </head>
 <body>
 	<!--모든 페이지 공통메뉴  -->
@@ -23,7 +22,7 @@
 		<div class="container">
 			<div class="header">
 				<!-- 로고 -->
-				<div class="mainLogo">
+				<div class="mainlogo">
 					<a href="/jspweb/index.jsp"> 
 						<img src="/jspweb/img/logo.jpg">
 					</a>

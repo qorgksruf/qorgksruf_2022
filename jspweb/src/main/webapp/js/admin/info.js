@@ -9,10 +9,9 @@ function getmemberList(){
 		method:"get",
 		success: (r)=>{
 			console.log('ajax응답');
-			console.log(r);
-		
-		
-				//테이블 헤더 구성
+			console.log(r);// 응답 결과 데이터 확인 
+			// 1. 응답데이터 처리 
+				// 1. 테이블 헤더 구성 
 				let html = `<tr>				
 									<th width="10%"> 번호 </th>
 									<th width="10%"> 프로필 </th>
@@ -33,7 +32,7 @@ function getmemberList(){
 						</tr>`
 
 				});
-				
+					// 3. 구성된html를 table 대입 
 				document.querySelector('.mListTable').innerHTML = html;
 				
 			
