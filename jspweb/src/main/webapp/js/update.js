@@ -9,7 +9,7 @@ document.querySelector('.mid').innerHTML = memberinfo.mid
 	console.log(memberinfo.mid)
 document.querySelectorAll('.memail').value = memberinfo.memail
 document.querySelector('.mimg').src 
-		= `/jspweb/member/pimg/${memberInfo.mimg == null ? 'default.webp' :  memberInfo.mimg }`
+		= `/jspweb/member/pimg/${memberinfo.mimg == null ? 'default.webp' :  memberInfo.mimg }`
 	
 function setUpdate(){
 	//첨부파일이 있을때 전송하는법
