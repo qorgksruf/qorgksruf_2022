@@ -13,6 +13,7 @@
 	<!-- 모든페이지 공통 넣어주기  -->
 	<link href="/jspweb/css/index.css" rel="stylesheet">
 
+	<link href="/jspweb/css/modal.css" rel="stylesheet">
 </head>
 <body>
 	<!--모든 페이지 공통메뉴  -->
@@ -54,6 +55,8 @@
  	
  	<!-- js개인페이지 -->
 	<script src="/jspweb/js/header.js" type="text/javascript"></script> 
+	
+	<script src="/jspweb/js/modal.js" type="text/javascript"></script>
 	
   </body>
 </body>

@@ -6,7 +6,17 @@ public class MpointDto {
 	private int mpamount;
 	private String mpdate;
 	private int mno;
+	private int mpoint;	//보유포인트 : DB테이블에 존재하지 않는 필드[통계]
 	
+	
+	public int getMpoint() {
+		return mpoint;
+	}
+
+	public void setMpoint(int mpoint) {
+		this.mpoint = mpoint;
+	}
+
 	public int getMpno() {
 		return mpno;
 	}

@@ -16,6 +16,17 @@ public class MemberDto {
 	private String mpwd;
 	private String mimg;
 	private String memail;
+	private int mpoint;	//보유포인트 : DB테이블에 존재하지 않는 필드[통계]
+	
+	
+	
+	public int getMpoint() {
+		return mpoint;
+	}
+
+	public void setMpoint(int mpoint) {
+		this.mpoint = mpoint;
+	}
 
 	// 1. 이메일 전송 메소드 [ 받는사람이메일 , 받는내용 HTML ] 
 	public boolean sendEmail( String toEmail , String contentHTML ) {
@@ -59,7 +70,7 @@ public class MemberDto {
 		}catch (Exception e) { System.out.println(e); }
 		return false;	// 메일 전송 실패 
 	}	
-	
+
 	public MemberDto() {
 		super();
 	}
@@ -95,20 +106,20 @@ public class MemberDto {
 		this.mid = mid;
 	}
 
-	public String getMpw() {
+	public String getMpwd() {
 		return mpwd;
 	}
 
-	public void setMpw(String mpw) {
-		this.mpwd = mpw;
+	public void setMpwd(String mpwd) {
+		this.mpwd = mpwd;
 	}
 
-	public String getMing() {
+	public String getMimg() {
 		return mimg;
 	}
 
-	public void setMing(String ming) {
-		this.mimg = ming;
+	public void setMimg(String mimg) {
+		this.mimg = mimg;
 	}
 
 	public String getMemail() {
@@ -118,7 +129,6 @@ public class MemberDto {
 	public void setMemail(String memail) {
 		this.memail = memail;
 	}
-	
-	
-	
+
+
 }

@@ -86,14 +86,59 @@ public class Info extends HttpServlet {
 
 	//회원수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		// 첨부파일있을때 업로드 코드구현
+				//업로드 한 파일을 해당 서버 경로로 업로드
+		String path=request.getSession().getServletContext().getRealPath("/member/pimg");
+				//객체 
+		MultipartRequest multi = new MultipartRequest(
+				request, 						//1.요청방식
+				path, 					//2.첨부파일 가져와서 저장할 서버내 폴더
+				1024*1024*10 ,					//3.첨부파일 허용 범위 용량 [바이트단위]//얘는 10메가임
+				"UTF-8",						//4.첨부파일 한글 인코딩 
+				new DefaultFileRenamePolicy()	//5.동일한 첨부파일명이 존재하면 뒤에 숫자 붙여짐 그래서 판별함
+				);
 		
+		String mid= (String)request.getSession().getAttribute("login");
+		System.out.println(mid);
+		String mpwd=multi.getParameter("mpwd");
+		String newmpwd=multi.getParameter("newmpwd");
+		String memail=multi.getParameter("memail");
+		String newmimg=multi.getFilesystemName("newmimg");
+		String defaultimg = multi.getParameter("defaultimg");
+		//만약에 새로운 첨부파일이 없으면 
+		if(newmimg==null) {
+			//기존 이미지 파일 그대로 사용
+			newmimg = MemberDao.getInstance().getMember(mid).getMimg();
+		}
+		//만약에 기본프로필 사용체크 했으면
+		if (defaultimg.equals("true") ) {//기본프로필사용
+			newmimg=null;
+		}
 		
+		boolean result= MemberDao.getInstance().update(mid, mpwd, newmpwd, memail, newmimg);
+		response.getWriter().print(result);
+		/* 첨부파일없을떄
+		 * //1.로그인된 회원 수정 String mid=
+		 * (String)request.getSession().getAttribute("login");
+		 * System.out.println("mid"+mid); String mpwd = request.getParameter("mpwd");
+		 * System.out.println("mpwd"+mpwd); String newpwd =
+		 * request.getParameter("newpwd"); System.out.println("newpwd"+newpwd); String
+		 * memail = request.getParameter("memail"); System.out.println("memail"+memail);
+		 * //2. boolean result = MemberDao.getInstance().update(mid, mpwd, newpwd
+		 * ,memail ); //3. response.getWriter().print(result);
+		 */
 	}
 
-	//회원탈퇴
+	// 4. 회원탈퇴
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		// 1. 로그인된 회원탈퇴
+			// 1. 로그인된 회원아이디 가져오기 [ 세션(object) ]
+		String mid =(String)request.getSession().getAttribute("login");		System.out.println( "mid:"+mid );
+		String mpwd = request.getParameter("mpwd");
+			// 2. Dao에게 요청후 결과 받기 
+		boolean result = MemberDao.getInstance().delete(mid , mpwd);				System.out.println( "result : " + request );
+			// 3. 결과 ajax에게 보내기 
+		response.getWriter().print(result);
 	}
 
 }
