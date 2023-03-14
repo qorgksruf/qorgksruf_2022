@@ -1,8 +1,25 @@
-function onpenModal(){//모달열기
-	console.log('모달열림')
+function openmodal(){
 	document.querySelector('.modal_wrap').style.display='flex';
+	return true;
 }
 
-function closeModal(){//모달닫긴
+function closemodal(){
 	document.querySelector('.modal_wrap').style.display='none';
+}
+
+function openmodal2(){
+	document.querySelector('.modal_wrap2').style.display='flex';
+	return true;
+}
+
+function closemodal2(){
+	document.querySelector('.modal_wrap2').style.display='none';
+}
+
+/*function openmodal3(cno){
+	document.querySelector('.modal_wrap3').style.display='flex';
+}*/
+
+function closemodal3(){
+	document.querySelector('.modal_wrap3').style.display='none';
 }
