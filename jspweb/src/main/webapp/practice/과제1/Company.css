@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.company{
+	width: 1200px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	border: solid 1px black; 
+}
