@@ -158,7 +158,7 @@ function onupdate(){
 	})
 } 
 
-//수정
+//퇴사
 function openmodal2(cno){
 	document.querySelector('.modal_wrap2').style.display='flex';
 	
@@ -166,7 +166,7 @@ function openmodal2(cno){
 	temp_cno = cno;
 }
 
- //탈퇴
+ //퇴사
   function out(){
 
 	let	cedate = document.querySelector('#cedate').value;
