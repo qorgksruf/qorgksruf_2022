@@ -35,7 +35,7 @@ display: none;
 } */
 
 @charset "UTF-8";
-.modal_wrap, .modal_wrap2, .modal_wrap3{
+.modal_wrap{
 	background-color: rgba(224,227,254,50%);
 	position: fixed; /* 고정위치 */
 	top:0; 
@@ -48,7 +48,7 @@ display: none;
 	/* 처음에는 숨겨 */
 	display: none;
 }
-.modal_box, .modal_box2, .modal_box3{
+.modal_box{
 	background-color: white;;
 	width: 50%; height: 50%;
 	padding : 100px 150px;
@@ -56,7 +56,7 @@ display: none;
 	border-radius: 20%;
 	align-items: center;
 }
-.modal_wrap, .modal_wrap2,.modal_wrap3 button{
+.modal_wrap button{
 	background-color: white;
 	border : solid 1px #BAC3FF;
 	border-radius : 10px;

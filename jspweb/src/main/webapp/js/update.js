@@ -1,4 +1,3 @@
-console.log('열림')
 
 if(memberinfo.mid==null){
 	alert('로그인하고오세요');

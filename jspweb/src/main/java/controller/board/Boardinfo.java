@@ -1,18 +1,22 @@
 package controller.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.dao.BoardDao;
 import model.dao.MemberDao;
 import model.dto.BoardDto;
-import practice.day03.BoardDao;
+
 
 /**
  * Servlet implementation class Boardinfo
@@ -30,6 +34,34 @@ public class Boardinfo extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	 int type =Integer.parseInt(request.getParameter("type") );
+		if( type==1 ) {
+			
+		ArrayList<BoardDto>result = BoardDao.getInstance().getBoardList();
+			
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArry= mapper.writeValueAsString(result);
+			
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonArry);	
+			
+		}else if( type==2 ) {
+			int bno =Integer.parseInt(request.getParameter("bno"));
+			System.out.println("bno"+bno);
+			
+			BoardDto result = BoardDao.getInstance().getBoard(bno);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArry= mapper.writeValueAsString(result);
+			
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonArry);			
+		}
+		
+		
 
 	}
 
@@ -65,7 +97,7 @@ public class Boardinfo extends HttpServlet {
 			String mid =(String)request.getSession().getAttribute("login");
 			int mno = MemberDao.getInstance().getMno(mid);
 				//만약에 회원번호가 존재하지 않으면 글쓰기 불가능
-			if(mno > 0) {
+			if(mno < 1) {
 				response.getWriter().print("false");	//로그인 안한사람 글쓰기 못하게 막기
 			}
 		// Dto 
