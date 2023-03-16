@@ -16,6 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import model.dao.BoardDao;
 import model.dao.MemberDao;
 import model.dto.BoardDto;
+import model.dto.pageDto;
 
 
 /**
@@ -36,12 +37,43 @@ public class Boardinfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	 int type =Integer.parseInt(request.getParameter("type") );
-		if( type==1 ) {
+		if( type==1 ) {	//전체출력
 			
-		ArrayList<BoardDto>result = BoardDao.getInstance().getBoardList();
+			//---------------page처리하기-------------------//
+			// 1.현재페이지[요청], 2.페이지당 표시할 게시물수 약 세개로만 해보자  3.전체페이지[게시물시작, 게시물끝]	
+			int page = Integer.parseInt(request.getParameter("page"));	//현재페이지 알기위한작업
+			int listsize = 3;
+			int startrow=(page-1)*listsize; // 해당 페이지에서의 게시물 시작번호  1페이지의 시작번호는 0이되는거임
+			//--------page 버튼 만들기----------------------//
+			//1.전체페이지수[총게시물레코드수/페이지당 표시수 ]  2.페이지 표시할 최대버튼 수 3.시작버튼 번호 
+				//게시물 수 구하기
+			int totalsize=BoardDao.getInstance().gettotalsize();
+			int totalpage=totalsize % listsize ==0 ?
+					totalsize/listsize : totalsize/listsize+1;
 			
+			ArrayList<BoardDto>result = BoardDao.getInstance().getBoardList(startrow,listsize);		
+			pageDto pageDto =
+					new pageDto(page, listsize, startrow, totalsize, totalpage, result);
+			
+			
+			/*
+					 * 총 레코드수=10	총 레코드의 인덱스: 0~9
+					 * 총 게시물수=10 , 페이지당 표시할 게시물수=3
+					 * 1.총 페이지수 = 012,345,678,9	--> 4
+					 * 		
+					 * 		총 레코드수/페이지당표시게시물수
+					 * 			1. 나머지가 없으면 => 몫만 사용	10/3	->3.33
+					 * 			2. 남머지가 있으면 => 몫+1		10/3	->4페이지
+					 * 
+					 *  
+					 * 2.페이지별 게시물시작 번호 찾기
+					 * 		1페이지요청-> (1-1)*3 =>0
+					 * 		2페이지요청=> 3
+					 * 		3페이지요청=> 6
+					 * */
+
 			ObjectMapper mapper = new ObjectMapper();
-			String jsonArry= mapper.writeValueAsString(result);
+			String jsonArry= mapper.writeValueAsString(pageDto);
 			
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json");
