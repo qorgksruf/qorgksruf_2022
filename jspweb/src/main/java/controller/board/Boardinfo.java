@@ -38,22 +38,58 @@ public class Boardinfo extends HttpServlet {
 
 	 int type =Integer.parseInt(request.getParameter("type") );
 		if( type==1 ) {	//전체출력
+			//------------카테고리 별 출력--------------------//
+			//1.카테고리 매개변수 요청 
+			int cno =Integer.parseInt(request.getParameter("cno") );
+			
+			
+			//------------검색처리---------------------------//
+			//검색에 필요한 매겨변수요청 [key,keyword ] 
+			String key=request.getParameter("key");
+				System.out.println(key);
+			String keyword=request.getParameter("keyword");
+				System.out.println(keyword);
+			
 			
 			//---------------page처리하기-------------------//
 			// 1.현재페이지[요청], 2.페이지당 표시할 게시물수 약 세개로만 해보자  3.전체페이지[게시물시작, 게시물끝]	
 			int page = Integer.parseInt(request.getParameter("page"));	//현재페이지 알기위한작업
-			int listsize = 3;
+			int listsize = Integer.parseInt(request.getParameter("listsize"));	//화면에 표시할 게시물 수 요청
 			int startrow=(page-1)*listsize; // 해당 페이지에서의 게시물 시작번호  1페이지의 시작번호는 0이되는거임
 			//--------page 버튼 만들기----------------------//
-			//1.전체페이지수[총게시물레코드수/페이지당 표시수 ]  2.페이지 표시할 최대버튼 수 3.시작버튼 번호 
+			//1.전체페이지수[총게시물레코드수/페이지당 표시수 ]  2.페이지 표시할 최대버튼 수 3.시작버튼/마지막버튼 번호 
 				//게시물 수 구하기
-			int totalsize=BoardDao.getInstance().gettotalsize();
+				//검색잉 없을때
+			//int totalsize=BoardDao.getInstance().gettotalsize();
+			int totalsize=BoardDao.getInstance().gettotalsize(key,keyword,cno);
 			int totalpage=totalsize % listsize ==0 ?
 					totalsize/listsize : totalsize/listsize+1;
 			
-			ArrayList<BoardDto>result = BoardDao.getInstance().getBoardList(startrow,listsize);		
+			int btnsize =5;//최대 페이징버튼 출력수
+			int startbtn = ((page-1)/btnsize)* btnsize+1;
+			/* 
+			 * 
+			 * 	btnsize=5 이면 페이지별 시작번호패턴은 1 6 11 16 21
+			 *  btnsize=3이면 시작번호패턴은 1 4 8
+			 * 
+			 * 			1페이지	: 1-1 / 5	*5+1		->0+1	1
+			 * 			2페이지	: 2-1/ 5	*5+1		->0+1	1
+			 * 			3페이지	: 3-1/ 5	*5+1		->0+1	1
+			 * 			4페이지	: 4-1/ 5	*5+1		->0+1	1
+			 * 			5페이지	: 5-1/ 5	*5+1		->0+1	1
+			 * 			6페이지	: 6-1/ 5	*5+1		->1+1	6
+			 * 			7페이지	: 7-1/ 5	*5+1		->1+1	6
+			 * 
+			 * */
+			
+			int endbtn =startbtn +(btnsize-1);	
+			//*단 마지막버튼수가 총 페이지수보다 커지면 마지막버튼수는 총페이지로 대입
+			if( endbtn>totalpage) endbtn=totalpage;
+			
+			
+			ArrayList<BoardDto>result = BoardDao.getInstance().getBoardList(startrow,listsize,key,keyword,cno);		
 			pageDto pageDto =
-					new pageDto(page, listsize, startrow, totalsize, totalpage, result);
+					new pageDto(page, listsize, startrow, totalsize, totalpage, btnsize, startbtn, endbtn, result);
 			
 			
 			/*
@@ -70,6 +106,16 @@ public class Boardinfo extends HttpServlet {
 					 * 		1페이지요청-> (1-1)*3 =>0
 					 * 		2페이지요청=> 3
 					 * 		3페이지요청=> 6
+					 * 3.시작버튼, 마지막버튼 수
+					 * 	7페이지 
+					 * 	1페이지-> 12345
+					 * 	2페이지-> 12345
+					 *  3페이지-> 12345
+					 *  4페이지-> 12345
+					 *  5페이지-> 67
+					 *  6페이지-> 67
+					 *  
+					 *  
 					 * */
 
 			ObjectMapper mapper = new ObjectMapper();

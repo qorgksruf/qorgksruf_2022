@@ -17,8 +17,8 @@ function getBoard(){
 			
 			let html =`${r.bdate} /
 					   ${r.bview} /
-					   ${r.bup} /
-					   ${r.bdown} /
+					   <button onclick="bIncrease(2)" type="type">${r.bup}</button> /
+					   <button onclick="bIncrease(3)" type="type">${r.bdown}</button> /
 			`
 			document.querySelector('.infobox').innerHTML=html;
 			document.querySelector('.pimgbox').innerHTML=r.mid;
@@ -74,4 +74,25 @@ function bdownload(bfile){
 				1.response.getWriter.print(문자데이터);
 				2.response.sendRedirect('경로')
 */
+
+//3.조회수1 좋아요수2 싫어요수3 
+bIncrease(1);	//해당스크립트가 열리는 순간 조회수증가
+function bIncrease(type){
+	//현재 게시물의 번호[증가할대상]
+	let bno = document.querySelector('.bno').innerHTML; 
+	console.log("bno"+bno);
+	$.ajax({
+		url:"/jspweb/board/view",
+		method:"get",
+		data:{"type":type ,"bno":bno },
+		success:(r)=>{
+			console.log('통신');
+			console.log(r);
+			getBoard();//새로고침
+		}
+	})
+}
+
+
+
 

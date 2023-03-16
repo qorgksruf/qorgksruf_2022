@@ -31,10 +31,15 @@ public class BoardDao extends Dao{
 	}
 	
 	//2-2 게시물/레코드 수 구하기
-	public int gettotalsize(){
-		String sql="select count(*) from member m natural join board b ";
+	public int gettotalsize(String key,String keyword, int cno){
+			String sql="";
+		if(key.equals("")&&keyword.equals("")) {//검색이없다
+			 sql=" select count(*) from member m natural join board b where b.cno= "+cno ;
+		}else {//검색이있다
+			sql = " select count(*) from member m natural join board b "
+					+ " where "+key+" like '%"+keyword+"%' and b.cno="+cno ;
+		}	
 		try {
-			ps=con.prepareStatement(sql);
 			rs=ps.executeQuery();
 			if(rs.next()) {
 				return rs.getInt(1);
@@ -48,9 +53,18 @@ public class BoardDao extends Dao{
 	
 	
 	//모든 글 출력
-	public ArrayList<BoardDto>getBoardList( int startrow,int listsize){
+	public ArrayList<BoardDto>getBoardList( int startrow,int listsize,String key,String keyword, int cno){
 		ArrayList<BoardDto>list= new ArrayList<>();
-		String sql="select b.*,m.mid from member m natural join board b limit ?,?";
+		String sql="";
+		if(key.equals("")&keyword.equals("") ) {
+			sql = " select b.* , m.mid from member m natural join board b  where b.cno= "+cno 
+					+ " order by b.bdate desc limit ? , ? ";
+		}else {
+			sql = " select b.* , m.mid from member m natural join board b "
+					+ " where "+key+" like '%"+keyword+"%' and b.cno="+cno 
+							+ " order by b.bdate desc limit ? , ?";
+		}
+	
 		try {
 			ps=con.prepareStatement(sql);
 			ps.setInt(1, startrow);
@@ -91,6 +105,28 @@ public class BoardDao extends Dao{
 		}	
 		return null;
 	}
+	//4.조회수/좋아요/싫어요 수 증가[update]
+	public boolean bIncrease(int type, int bno) {
+		String sql="";
+		if(type==1) {sql="update board set bview = bview+1 where bno ="+bno;
+			
+		}if(type==2) {sql="update board set bup = bup+1 where bno ="+bno;
+			
+		}if(type==3) {sql="update board set bdown = bdown+1 where bno ="+bno;
+		}
+		try {
+			ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+	
+	
+	
+	
 	
 	
 }
