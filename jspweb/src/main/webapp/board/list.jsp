@@ -23,7 +23,7 @@
 		<a href="write.jsp">글쓰기</a>
 		
 		<button onclick="setsearch()" type="button">전체보기[검색제거]</button>
-		<div class="seachcount">총 게시물수:</div>
+		<div class="seachcount"></div>
 		<select onchange="setlistsize()" class="listsize">
 			<option>3</option>
 			<option>5</option>

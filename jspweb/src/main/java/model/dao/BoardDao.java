@@ -40,6 +40,8 @@ public class BoardDao extends Dao{
 					+ " where "+key+" like '%"+keyword+"%' and b.cno="+cno ;
 		}	
 		try {
+			
+			ps=con.prepareStatement(sql);
 			rs=ps.executeQuery();
 			if(rs.next()) {
 				return rs.getInt(1);
