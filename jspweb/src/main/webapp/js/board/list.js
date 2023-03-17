@@ -48,7 +48,7 @@ function getBoardList(page){
 				 html+=`
 				<tr>
 					<td>${o.bno}</td>
-					<td><a href="/jspweb/js/board/view.jsp?bno=${o.bno}">${o.btitle}</a></td>
+					<td><a href="/jspweb/board/view.jsp?bno=${o.bno}">${o.btitle}</a></td>
 					<td>${o.mid}</td>
 					<td>${o.bdate}/td>
 					<td>${o.bview}</td>

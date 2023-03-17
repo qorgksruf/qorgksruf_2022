@@ -45,7 +45,7 @@ public class MemberDao extends Dao{
 	
 	
 	// 모든 회원출력 [관리자기준 인수x 반환: 모든회원들의 dto]
-	public ArrayList<MemberDto> getMemberList(){
+	public ArrayList<MemberDto> getMemberList(int startrow,int listsize,String key,String keyword, int mno){
 		ArrayList<MemberDto>list = new ArrayList<>();	
 			String sql= "select * from member";
 				try {
@@ -225,5 +225,100 @@ public class MemberDao extends Dao{
 		}
 		return 0;
 	}
+	
+	
+	//2-2 게시물/레코드 수 구하기
+	public int gettotalsize(String key,String keyword, int mno){
+			String sql="";
+		if(key.equals("")&&keyword.equals("")) {//검색이없다
+			 sql=" select count(*) from member m natural join board b where b.mno= "+mno ;
+		}else {//검색이있다
+			sql = " select count(*) from member m natural join board b "
+					+ " where "+key+" like '%"+keyword+"%' and b.mno="+mno ;
+		}	
+		try {
+			
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	
+	public int user_count( String key , String keyword ) {
+		
+		String sql = "";
+		
+		if( key.equals("") && keyword.equals("")  ) { // count 구할때 만약에 검색이 없으면 아래쿼리로 실행
+			
+			sql = "select count(*) from member";
+			
+		}else { // 만약에 검색이 있으면 검색된 카운트를 구하는 쿼리문 실행
+			
+			sql = "select count(*) from member where " + key + " like '%" + keyword + "%' ";
+			
+		}
+		
+		try{
+			
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if ( rs.next() ) { return rs.getInt(1); }
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	
+	
+	public ArrayList<MemberDto> infoPrint( int startrow , int listsize , String key , String keyword ){
+		
+		ArrayList<MemberDto> MemberList = new ArrayList<>();
+		
+		// 공통사용을 위해 변수 밖에 선언
+		String sql = "";
+		
+		// 검색처리를 위한 제어문 
+		if( key.equals("") && keyword.equals("") ) { // 만약에 key 값이 공백이고 keyword 값이 공백이면 
+			
+			// 조건 없는 그냥 select 실행
+			sql = "select * from member limit ? , ?";
+			
+			
+		}else { // key 와 keyword 값이 있으면 
+			
+			// 조건이 추가된 sql 실행
+			sql = "select * from member where " + key + " like '%" + keyword + "%' limit ? , ?";
+			
+		}
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, startrow );
+			ps.setInt(2, listsize);
+			
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				
+				MemberDto dto = new MemberDto(
+						rs.getInt(1), rs.getString(2) , rs.getString(3) ,
+						rs.getString(4) , rs.getString(5) );
+				MemberList.add(dto);
+			}
+		}catch (Exception e) { System.out.println(e); }
+		
+		return MemberList;
+	}
+	
 	
 }

@@ -1,5 +1,5 @@
 console.log('view js열림')
-
+console.log(memberinfo);
 getBoard();
 function getBoard(){
 	console.log('함수실행')
@@ -31,8 +31,20 @@ function getBoard(){
 				html = ` ${r.bfile} <button onclick="bdownload( '${ r.bfile }' )" type="button"> 다운로드 </button> `
 				document.querySelector('.bfile').innerHTML=html;	
 			}
+			//-----------------------------------------
+			//로그인된회원과 작성자가 일치하면 수정,삭제 가능하도록
+			if(memberinfo.mid==r.mid){
+				console.log(r.mid)
+				html=`
+				<button onclick="bdelete(${bno}, ${r.cno})" type="button">삭제</button>
+				<button onclick="bupdate(${bno})" type="button">수정</button>
+				`;
+				document.querySelector('.btnbox').innerHTML=html;
+			}
+			
 			
 		}
+		
 	})//ajax e
 	
 }
@@ -93,6 +105,27 @@ function bIncrease(type){
 	})
 }
 
-
-
+// 삭제
+function bdelete(bno,cno){
+	$.ajax({
+		url:"/jspweb/board/info",
+		method:"delete",
+		data:{"bno":bno, "type":1},
+		success:(r)=>{
+			console.log('통신');
+			console.log(r);
+			if(r=='true'){
+				alert('삭제성공')
+				location.href="/jspweb/board/list.jsp?cno="+cno;
+			}else{
+				alert('삭제실패')
+			}
+			
+		}
+	})	
+}
+// 수정 페이지로 이동
+function bupdate(bno){
+	location.href="/jspweb/board/update.jsp?bno="+bno;
+}
 

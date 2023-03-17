@@ -13,8 +13,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.dao.BoardDao;
 import model.dao.MemberDao;
 import model.dto.MemberDto;
+import model.dto.infoDto;
+import model.dto.pageDto;
 
 /**
  * Servlet implementation class Info
@@ -72,17 +75,49 @@ public class Info extends HttpServlet {
 	}
     //로그인	/ 회원1명/ 회원여러명 정보 호출
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+
+		String key = request.getParameter("key");
+		String keyword = request.getParameter("keyword");
+	
 		
-		ArrayList<MemberDto>result = MemberDao.getInstance().getMemberList();
+		int page = Integer.parseInt( request.getParameter("page") );			// 호출한 페이지 전달받기
+		int listsize = Integer.parseInt( request.getParameter("listsize") );	// 리스트에 출력할 레코드 수 사이즈 받기 
+		int startrow = (page-1)*listsize;										// 시작 레코드 번호
 		
+		// 1. 토탈사이즈 
+		int totalsize = MemberDao.getInstance().user_count( key , keyword );	// DAO 에게 total count 수 요청 
+		int totalpage = totalsize % listsize == 0 ? totalsize/listsize : totalsize/listsize+1 ; // 총 유저수에따른 페이지수 구하기
+		
+		int btnsize = 5; // 표시할 버튼의 갯수 지정
+		int startbtn = ( (page-1) / btnsize ) * btnsize + 1 ; // 시작 버튼 번호구하기 
+		
+		int endbtn = startbtn + (btnsize-1); // 끝 버튼번호 구하기 
+		
+		if( endbtn > totalpage ) { // 끝 버튼이 총 페이지수를 넘어갈 수 없게 처리
+			endbtn = totalpage;
+		}
+		
+		
+		// Dao 호출하여 MemberDto 구성 
+		ArrayList<MemberDto> MemberList = MemberDao.getInstance().infoPrint( startrow , listsize , key , keyword );
+		
+		// 페이지 , 리스트사이즈 , 버튼 정보 , MemberDto 등 다양한 자료형을 한번에 담기위한 UserListDto 구성 
+		infoDto dto = new infoDto(page, listsize, startrow, totalsize, totalpage, btnsize, startbtn, endbtn, MemberList);
+		
+		// 형변환
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonArray = mapper.writeValueAsString(result);
+		String json = mapper.writeValueAsString( dto );
 		
+		// 리턴
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		response.getWriter().print(jsonArray);
+		response.getWriter().print( json );
+				
+		}
+			
 
-	}
+	
 
 	//회원수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

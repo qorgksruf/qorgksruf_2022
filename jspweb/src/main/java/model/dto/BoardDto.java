@@ -35,6 +35,15 @@ public class BoardDto {
 		this.cno = cno;
 		this.mid = mid;
 	}
+	//업데이트용 생성자
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, int cno) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.cno = cno;
+	}
 
 	public BoardDto(String btitle, String bcontent, String bfile, int mno, int cno) {
 		super();
