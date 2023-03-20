@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	
+	<link href="/jspweb/css/list.css" rel="stylesheet">
+	<!-- 폰트어썸 -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+	
 </head>
 <body>
 
@@ -17,43 +22,56 @@
 	<!--cno숨겨서 js에게 전달  -->
 	<input type="hidden" class="cno" value="<%=cno%>">
 	
-	<div class="container">	
-		<h3 class="cname"></h3>
-		
-		<a href="write.jsp">글쓰기</a>
-		
-		<button onclick="setsearch()" type="button">전체보기[검색제거]</button>
-		<div class="seachcount"></div>
-		<select onchange="setlistsize()" class="listsize">
-			<option>3</option>
-			<option>5</option>
-			<option>10</option>
-		</select>
-		
-		<table class="boardtable table table-hover">
+	
+	
+	<!-- html, css -->
+	<div class="container">
+		<div class="boardbox">	<!--게시물리스트 출력 구역  -->
+			<div class="boardtop">
+				<h3 class="cname">공지사항</h3>
+				<p>다양한 사람들과 정보를 공유 해보세요</p>
+			</div>
+			<div class="boardtopetc">
+			<a href="write.jsp">
+				<button class="bbtn"><i class="fas fa-pencil-alt"></i>글쓰기</button>
+				</a>
+				<div>
+					<span class="seachcount">게시물수:6</span>
+					<button class="seachcount()" class="bbtn">전체보기</button>
+					<select class="bbtn listsize" onchange="setlistsize()">
+							<option>3</option>
+							<option>5</option>
+							<option>10</option>
+					</select>
+				</div>
+			</div>
 			
-		</table>
-		
+			<div class="boardTable">
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="container">	
+	
+	<div class="boardbottom">
 		<!-- 페이징처리 버튼들  -->
 		<div class="pagebox">
 
 		</div>
 		
-		<!--검색창  -->
-					<!-- 
-						select * from board where 필드명=데이터;
-						
-					 -->
-		<div>		<!--select*from board where 필드명=데이터  -->
-			<select class="key"> <!--select 시 사용되는 조건의 필드명  -->
+		
+					 
+		<div>	
+			<select class="key bbtn"> <!--select 시 사용되는 조건의 필드명  -->
 				<option value="b.btitle">제목</option>
 				<option value="b.bcontent">내용</option>
 				<option value="m.mid">작성자</option>
 			</select>
 			<input  class="keyword" type="text">	<!-- select시 사용되는 조건의 데이터 -->	
-			<button onclick="getsearch()" type="button">검색</button>
+			<button class="bbtn" onclick="getsearch()" type="button">검색</button>
 		</div>
-		
+	</div>	
 	</div>
 
 

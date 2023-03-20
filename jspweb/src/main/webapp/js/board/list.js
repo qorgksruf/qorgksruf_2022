@@ -33,31 +33,29 @@ function getBoardList(page){
 			console.log('통신');
 			console.log(r);
 			//-------------------------테이블출력--------------------------------//
-			let html=`
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일/th>
-					<th>조회수</th>
-					<th>좋아요</th>
-					<th>싫어요</th>
-				</tr>
-			`
+			let html=``;
 			 r.boardList.forEach((o,i )=>{	 
 				 html+=`
-				<tr>
-					<td>${o.bno}</td>
-					<td><a href="/jspweb/board/view.jsp?bno=${o.bno}">${o.btitle}</a></td>
-					<td>${o.mid}</td>
-					<td>${o.bdate}/td>
-					<td>${o.bview}</td>
-					<td>${o.bup}</td>
-					<td>${o.bdown}</td>
-				</tr>				 
-				 `
+				<div class="boardcontent">
+					<div>
+					<img alt="" class="hpimg"
+					 src="/jspweb/member/pimg/${o.mimg==null?'default.webp' : o.mimg}">
+					<span class="mid">${o.mid}</span>
+					<span class="bdate">${o.bdate}</span>
+					</div>
+				</div>
+				<div class="btitle">
+					<a href="/jspweb/board/view.jsp?bno=${o.bno}">${o.btitle}</a>
+				</div>
+				<div class="contentbottom">
+					<span><i class="fas fa-eye"></i><span class="bview">${o.bview}</span></span>
+					<span><i class="far fa-thumbs-up"></i><span class="bup">${o.bup}</span></span>
+					<span><i class="far fa-thumbs-down"></i><span class="bdown">${o.bdown}</span> </span>
+					<span><i class="far fa-comment-dots"></i><span class="rcount">${o.rcount}</span></span>
+				</div>
+				 `;
 			 })
-			 document.querySelector('.boardtable').innerHTML=html;
+			 document.querySelector('.boardTable').innerHTML=html;
 			 //-------------------페이징 버튼 출력----------------------------//
 			
 			html='';//기존에 들어있던 내용 제거

@@ -1,5 +1,8 @@
 package model.dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BoardDto {
 	private int bno;
 	private String btitle;
@@ -18,8 +21,24 @@ public class BoardDto {
 	}
 	
 	//추가출력용생성자
-	private String mid;
+	private String mid;	//작성자 아이디
+	private String mimg;//작성자 프로필 이미지
+	private int rcount;	//댓글개수
 
+	
+	
+	public String getMimg() {
+		return mimg;
+	}
+	public void setMimg(String mimg) {
+		this.mimg = mimg;
+	}
+	public int getRcount() {
+		return rcount;
+	}
+	public void setRcount(int rcount) {
+		this.rcount = rcount;
+	}
 	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int bup, int bdown,
 			int mno, int cno, String mid) {
 		super();
@@ -42,7 +61,19 @@ public class BoardDto {
 		this.btitle = btitle;
 		this.bcontent = bcontent;
 		this.bfile = bfile;
-		this.cno = cno;
+		
+		//오늘날짜표기 
+		Date date = new Date();
+			System.out.println(date);
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String now = sdf.format(date);
+		
+		//만약에 오늘 날짜와 작성일과 동일하면 [split("")[1]: 시간 ]
+		if( now.split("")[0].equals(bdate.split(" ")[0] ) ) {
+			this.bdate=bdate.split("")[1];
+		}else {
+			this.bdate=bdate.split("")[0];
+		}
 	}
 
 	public BoardDto(String btitle, String bcontent, String bfile, int mno, int cno) {
@@ -126,7 +157,8 @@ public class BoardDto {
 
 	//출력용생성자 하나 만듬
 
-	
+	//
+
 	
 	
 }

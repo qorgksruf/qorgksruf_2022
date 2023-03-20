@@ -4,6 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.dto.MemberDto;
+import model.dto.ReplyDto;
 
 public class MemberDao extends Dao{
 	//싱글톤
@@ -319,6 +320,8 @@ public class MemberDao extends Dao{
 		
 		return MemberList;
 	}
+
+	
 	
 	
 }
