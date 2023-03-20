@@ -10,7 +10,7 @@ document.querySelector('."rwritebtn"').disabled=true;
 
 
 //현재 보고 있는 게시물 번호
-let bno = document.querySelector('.bno').innerHTML;
+let bno = document.querySelector('.bno').value;
 
 //1.해당게시물 호출
 getBoard();
@@ -26,20 +26,24 @@ function getBoard(){
 			console.log('통신');
 			console.log(r);
 			
-			let html =`${r.bdate} /
-					   ${r.bview} /
-					   <button onclick="bIncrease(2)" type="type">${r.bup}</button> /
-					   <button onclick="bIncrease(3)" type="type">${r.bdown}</button> /
-			`
-			document.querySelector('.infobox').innerHTML=html;
-			document.querySelector('.pimgbox').innerHTML=r.mid;
+			let html =``
+			
+			document.querySelector('.mimg').src=`/jspweb/member/pimg/${ r.mimg == null ? 'default.webp' : r.mimg}`;
+			document.querySelector('.mid').innerHTML = r.mid;
+			document.querySelector('.bdate').innerHTML = r.bdate;
+			document.querySelector('.bview').innerHTML = r.bview;
+			document.querySelector('.bup').innerHTML = r.bup;		
+			document.querySelector('.bdown').innerHTML = r.bdown;
 			document.querySelector('.btitle').innerHTML=r.btitle;
 			document.querySelector('.bcontent').innerHTML=r.bcontent;
 			
 			if(r.bfile == null){//첨부파일 없을떄
-				document.querySelector('.bfile').innerHTML='첨부파일없음';
+
 			}else{//첨부파일 있을때
-				html = ` ${r.bfile} <button onclick="bdownload( '${ r.bfile }' )" type="button"> 다운로드 </button> `
+				//html = ` ${r.bfile} <button onclick="bdownload( '${ r.bfile }' )" type="button"> 다운로드 </button> `
+				html = `<a href="/jspweb/filedownload?bfile=${ r.bfile }" > 
+							<i class="fas fa-download"></i>${ r.bfile } 
+						</a>`				
 				document.querySelector('.bfile').innerHTML=html;	
 			}
 			//-----------------------------------------

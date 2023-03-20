@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -36,11 +40,11 @@
 						<option value="2">커뮤니티 </option>
 						<option value="3">QnA </option>
 						<option value="4">노하우 </option>
-					</select>
-			제목	:<input name="btitle" type="text">
-			내용	:<textarea name="bcontent" rows="3" cols="3"></textarea>
-			첨부파일: <input name="bfile" type="file">
-			<button onclick="bwrite()" type="button">쓰기</button>
+					</select><br>
+			제목	:<input name="btitle" type="text"><br>
+			내용	:<textarea id="summernote" name="bcontent" rows="3" cols="3"></textarea><br>
+			첨부파일: <input name="bfile" type="file"><br>
+			<button onclick="bwrite()" type="button">쓰기</button><br>
 		</form>
 	</div>
 	
@@ -50,6 +54,11 @@
 	2. enctype= multipart/form-data  
 	주의 form 테그 안에있는 <button> type 생략시 type="submit"(폼보내기)
 		<!-- 	<form method="post" action="서블릿URL"  enctype="multipart/form-data"> -->
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 
 	<script src="/jspweb/js/board/write.js"  type="text/javascript"></script>
 	
