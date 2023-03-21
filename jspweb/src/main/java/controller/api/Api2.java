@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Api1
  */
-@WebServlet("/api1")
-public class Api1 extends HttpServlet {
+@WebServlet("/api2")
+public class Api2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Api1() {
+    public Api2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class Api1 extends HttpServlet {
 			//URL 클래스
 				//1. .openStrem(): 해당 객체의 연결된 url 스트림 제공 함수 [반환 Inputstream]
 		//URL url = new URL("URL주소")
-		URL url = new URL("https://api.odcloud.kr/api/15090398/v1/uddi:6fe0e3f2-0285-4999-9edf-995afe19a6ea?page=1&perPage=96&serviceKey=LByHaZAPV%2B358qol0urRIjwiPtuFl%2BRzRrzTXQzCUhCm1bU0Eq7onkTRngIvK640oMHYOLPY6dRpVhdJbjIG3A%3D%3D");
+		URL url = new URL("https://api.odcloud.kr/api/3071314/v1/uddi:e4e7774d-0b16-4299-b830-dee5045df70f_201909291441?page=1&perPage=135&serviceKey=LByHaZAPV%2B358qol0urRIjwiPtuFl%2BRzRrzTXQzCUhCm1bU0Eq7onkTRngIvK640oMHYOLPY6dRpVhdJbjIG3A%3D%3D");
 		
 		//해당 URL의 데이터[스트림(바이트)]읽어오기 위한 스트림 객체 생성  InputStreamReader 얘는 인코딩 지원해줌
 		//InputStream inputStream = url.openStream();
@@ -58,7 +58,8 @@ public class Api1 extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

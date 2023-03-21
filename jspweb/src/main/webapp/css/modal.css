@@ -38,6 +38,8 @@ display: none;
 .modal_wrap{
 	background-color: rgba(224,227,254,50%);
 	position: fixed; /* 고정위치 */
+	/* 카카오지도 z-index  */
+	z-index:999;		/*다른 position css와 겹쳤을떄의 우선순위 */
 	top:0; 
 	left : 0;
 	width: 100%;
