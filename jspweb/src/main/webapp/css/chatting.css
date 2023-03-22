@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.chattingbox{
+	width: 30%;
+	margin: 50px auto; 
+	/*해당 구역크기보다 내용물이 커지면 스크롤 생성 */
+
+}
+
+.contentbox{	/*채팅 청보가 출력되는 구역  */
+	background-color: #BBCEE2;
+	height: 700px;
+	padding: 20px;
+	margin-top: 15px;
+	overflow: scroll;
+}
+
+.date{
+	font-size: 2px;
+	margin: 0px 10px;
+}
+
+.content{
+	background-color: white;
+	border-radius: 10px;
+	padding: 10px;
+	/*해당 구역크기보다 내용물이 커지면 자동줄바꿈처리  */
+	max-width: 70%;		/*해당 구역크기의 최대 사이즈  */
+	word-break: break-all;
+	font-size: 12px;
+	
+}
+.secontent{
+	text-align: right;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-top: 15px;
+}
+
+.msgbox{
+	width: 100%;
+	border: 1px solid #e8e8e8;
+	padding: 15px;
+	resize: none;
+}
+
+.cattingbtnbox{
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+.sendbtn{
+	padding: 10px;
+	font-size: 10px;
+	background-color: yellow;
+	border: none;
+	border-radius: 5px;
+}
+
+.alerm{/* 알람메시지 */
+	width: 70%;
+	margin: 20px auto;
+	font-size: 5px;
+	text-align: center;
+	background-color: #B1C3D5;
+	border-radius: 10px;
+}
+
+.tocontent{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.name{
+	font-size: 12px;
+}
+
+
+.contentdate{
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+.rcontent{
+	margin-left: 8px;
+}
+
+.secontent .content{
+	background-color: #FFEB33;
+}
+
+
