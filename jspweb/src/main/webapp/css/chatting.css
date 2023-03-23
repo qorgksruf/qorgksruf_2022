@@ -1,8 +1,33 @@
 @charset "UTF-8";
 
+
+.chattingwrap{
+	display: flex;
+	justify-content: center;;
+}
+
+
+.connectlistbox{
+	width: 15%;
+	padding: 10px;
+}
+
+.connetbox{
+	display: flex;
+	align-items: center;
+	margin-top: 15px;
+}
+
+
+.connetbox.name{
+	margin-left: 10px;
+}
+
+
 .chattingbox{
 	width: 30%;
-	margin: 50px auto; 
+	justify-content: flex-end;
+	border: 1px solid #bacee0;
 	/*해당 구역크기보다 내용물이 커지면 스크롤 생성 */
 
 }
@@ -14,6 +39,7 @@
 	margin-top: 15px;
 	overflow: scroll;
 }
+
 
 .date{
 	font-size: 2px;
@@ -90,5 +116,25 @@
 .secontent .content{
 	background-color: #FFEB33;
 }
+/* 이모티콘버튼 */
+.emobtn{
+	background-color: transparent;
+	border: none;
+	padding: 5px;
+	font-size: 23px;
+}
+
+/* 질문 */
+.enolist{
+	width: 300px;
+	height: 300px;
+	overflow: scroll;
+}
+
+/* 내용물안에 사진이 있으면 배경 투명 */
+.emocontent{
+	background-color: transparent !important;
+}
+
 
 

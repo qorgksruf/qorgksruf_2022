@@ -68,38 +68,58 @@ if(memberinfo.mid==null){
 	location.href="/jspweb/member/login.jsp";
 }else{
 	//1.클라이언트소켓 생성과 서버소켓 연결[@onopen]
-	 클라이언트소켓 =new WebSocket('ws://192.168.17.54:8080/jspweb/chatting/'+memberinfo.mid);	//종착점// new WebSocket('ws://localhost:8080/jspweb/chatting'/+로그인한 사람 아이디
+	 클라이언트소켓 =new WebSocket('ws://localhost:8080/jspweb/chatting/'+memberinfo.mid);	//종착점// new WebSocket('ws://localhost:8080/jspweb/chatting'/+로그인한 사람 아이디
 	 클라이언트소켓.onopen=function(e){서버소켓연결(e)}
 	 클라이언트소켓.onmessage =function(e){메시지받기(e)}
 	 클라이언트소켓.onclose = function(e){연결해제(e)}
+	 클라이언트소켓.onerror=function(e){alert('문제발생:관리자에게문의'+e)}
 }
 
 
 
 //2.클라이언트소켓이 접속했을때 이벤트/함수 정의 걍 오픈과 동시에 입장함수라고 생각하삼 없어도됨
 function 서버소켓연결(e){
-	contentbox.innerHTML+=`	
-				<div class="alerm">
-					<span> 채팅방입장하셨습니다 </span>
-				</div>`
+	자료보내기(memberinfo.mid+"님이 채팅방에 접속하셨습니다" ,"alarm")
 } //접속했을때 하고싶은 함수 정의
 
 
 
 
 
-//3.클라이언트 소켓이 서버에게 메시지보내기@OnMessage
+//3.클라이언트 소켓이 서버에게 메시지보내기@OnMessage	(1.보내기버튼 눌렀을때 2.입력창에서 엔터했을때)type=msg
 function 보내기(){
 	console.log('send열림')
 	let msgbox=document.querySelector('.msgbox').value;
+		//json 형식의 문자열 타입 만들어서 문자열로 타입으로 전송
+		//json parse(json형식의 문자열타입)	: 문자열타입->json 타입으로 변환
+		//JSON.stringify(json객체)		:json타입->json형식의 string타입으로*****
+		//객체를 제이슨 모양의 문자타입으로 보냄
+		let info={
+			type:'msg',
+			msgbox:msgbox
+		}
+	console.log('-----------msgbox-----------');		
 	console.log(msgbox);
 	//*서버소켓에게 메시지 전송하기
-	클라이언트소켓.send(msgbox);//@OnMessage로감
+	클라이언트소켓.send(JSON.stringify(info) );//@OnMessage로감
 	//전송 성공시 채팅창 초기화
 	document.querySelector('.msgbox').value='';
 }
 
-
+//4-2 type에 따른 html 구별
+function 메시타입구분(msg){
+	let json =	JSON.parse(msg);	//다시 형버ㅕㄴ함
+	let html = '';
+	console.log('---------------json 확인-------------')
+	console.log(json)
+	
+	if(json.type=='msg'){
+		html+=`	<div class="content">${json.msgbox}</div>`
+	}else if(json.type=='emo'){
+		html+=`	<div class="content emocontent"><img src="/jspweb/img/emo${json.msgbox}.gif"></div>`	
+	} 
+	return html;
+}
 
 
 //4.서버로부터 메시지가 왔을때 메시지 받기
@@ -109,25 +129,51 @@ function 메시지받기(e){//<-----<-e-----getBasicRemote().sendText(msg)\
 	console.log(JSON.parse(e.data) );	//문자열 json -> 객체 json 형변환 즉 얘는 객체타입
 	
 	let data= JSON.parse(e.data);
+	console.log('--------------data확인--------------');
+		console.log(data);
+	//let msg = JSON.parse(data.msg);	
+	//console.log('--------------msg확인--------------');
+		//console.log(msg);
 	
+	//명단[여러개=list/Array] vs 메시지정보[1개=dto/object]	
+	if(Array.isArray(data) ){
+		alert('접속명단이 왔다');
+		let html ='';
+		
+			data.forEach((o)=>{
+			
+			html+=`
+				<div class="connetbox">	<!-- 접속 명단 1명기준 -->
+					<div><img alt="" src="/jspweb/member/pimg/${data.frommimg==null ? 'default.webp' : data.frommimg}" class="hpimg"></div>
+					<div class="name">${o.frommid}</div>
+				</div>
+			`
+		})
+		document.querySelector('.connectlistbox').innerHTML=html;
+		
+	}else if(JSON.parse(data.msg).type=='alarm'){
+			contentbox.innerHTML+=`	
+				<div class="alerm">
+					<span> ${JSON.parse(data.msg).msgbox}</span>
+				</div>`
+	}
 	//보낸
-	if(data.frommid==memberinfo.mid){
+	else if(data.frommid==memberinfo.mid){
 		contentbox.innerHTML+=`
 				<div class="secontent">
 					<div class="date">${data.time}</div>
-					<div class="content">${data.msg}</div>
+					${메시타입구분(data.msg)}
 				</div>
 		`
 	}else{//받은
 		contentbox.innerHTML+=
 		`
 				<div class="tocontent">
-					<div><img src="/jspweb/member/pimg/${data.mimg==null ? 'default.webp' : data.formmimg} class="hpimg"></div>
+					<div><img src="/jspweb/member/pimg/${data.formmimg==null ? 'default.webp' : data.formmimg}" class="hpimg"></div>
 					<div class="rcontent">
 						<div class="name">${ data.frommid }</div>
-						<div class="contentdate">
-							<div class="content">${data.msg}</div>
-							<div class="date"> ${data.time}</div>
+						${메시타입구분(data.msg)}
+						<div class="date"> ${data.time}</div>	
 						</div>
 					</div>
 					
@@ -147,8 +193,8 @@ function 메시지받기(e){//<-----<-e-----getBasicRemote().sendText(msg)\
 
 //5. 서버와 연결이 끊겼을떄[클라이언트 객체가 초기화될때 -> F5, 페이지 전환할때 등등]
 function 연결해제(e){
-	console.log("---------------------------------------")
-	console.log('연결해제')
+	//자료보내기(memberinfo.mid+"님이 채팅방에서 나가셨습니다" ,"alarm")
+	//console.log('연결해제')
 }
 
 //엔터키를 눌렀을때
@@ -159,8 +205,27 @@ function enterkey(){
 		보내기();
 	}
 }
+// 7.이모티콘 출력
+getemo();
+function getemo(){
+	let html='';
+	for(let i=1; i<=4; i++ ){
+		html+=`
+		<img onclick="자료보내기(${i},'emo')" alt="" src="/jspweb/img/emo${i}.gif" width="70px">
+		`
+	}
+		document.querySelector('.enolist').innerHTML=html;
+}
 
-
+function 자료보내기(msgbox,type){
+	let msg={
+	type:type,
+	msgbox:msgbox
+	}
+	console.log(msg);
+	//*서버소켓에게 메시지 전송하기
+	클라이언트소켓.send(JSON.stringify(msg) );//@OnMessage로감
+}
 
 
 
