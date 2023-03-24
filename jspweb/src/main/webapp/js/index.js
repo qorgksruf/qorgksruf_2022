@@ -30,7 +30,7 @@ function productlistprint(){
 					<span> ${p.pstate} </span>
 					<span> ${p.pview} </span>
 					<span> ${p.pdate} </span>
-					<span> <button onclick="setplike(${p.pno})" type="button"> getplike(${p.pno}) </button></span>
+					<span> <button onclick="setplike(${p.pno})" type="button"  class="plikebtn"> </button></span>
 				</div>`
 					
 	})
@@ -86,7 +86,7 @@ var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표�
 								<div> ${p.pstate} </div>
 								<div> ${p.pview} </div>
 								<div> ${p.pdate} </div>
-								<div> <button class="plikebtn" onclick="setplike(${p.pno})" type="button"> </button></div>
+								<span> <button onclick="setplike(${p.pno})" type="button"  class="plikebtn"> </button></span>
 								</div>`
 								
 					document.querySelector('.productlistbox').innerHTML = html;
