@@ -1,14 +1,20 @@
 package product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import model.dao.ProductDao;
+import model.dto.ProductDto;
 
 /**
  * Servlet implementation class info
@@ -25,12 +31,22 @@ public class productinfo extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("UTF-8");
+
+		String 동=request.getParameter("동");
+		String 서=request.getParameter("서");
+		String 남=request.getParameter("남");
+		String 북=request.getParameter("북");
+			
+		ArrayList<ProductDto>result = ProductDao.getInstance().getproductList(동,서,남,북); 
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonArray =  mapper.writeValueAsString( result );
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print( jsonArray );
 	}
 
 	/**
@@ -58,6 +74,12 @@ public class productinfo extends HttpServlet {
 			System.out.println(plat);
 		String plng=multi.getParameter("plng");	
 			System.out.println(plng);
+		
+		ProductDto dto = new ProductDto(pname, pcomment, pprice, plat, plng);
+			
+		boolean result = ProductDao.getInstance().onwrite(dto);
+		
+		response.getWriter().print(result);
 		
 	}
 

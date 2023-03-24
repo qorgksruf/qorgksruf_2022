@@ -14,6 +14,12 @@ function onwrite(){
 	writeformData.set("plat",plat);
 	writeformData.set("plng",plng);
 	
+	if(plat==0||plng==0){
+		alert('위치 선택후 등록해주세요');
+		return;
+	}
+	
+	
 	$.ajax({
 		url:"/jspweb/product/info",
 		method:"post",
@@ -23,11 +29,21 @@ function onwrite(){
 		success : (r)=>{
 			console.log( "통신성공" )
 			console.log( r )
+			if(r=="true"){
+				alert('등록성공');
+				location.href="/jspweb/index.jsp"
+			}else{
+				console.log( "통신실패" )
+			}
 		}
 		
 	})
 	
 }
+
+
+
+
 
 //----------------------------카카오를 지도에 표시할 div
 
