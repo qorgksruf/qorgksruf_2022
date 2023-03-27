@@ -45,6 +45,8 @@
 			내용	:<textarea id="summernote" name="bcontent" rows="3" cols="3"></textarea><br>
 			첨부파일: <input name="bfile" type="file"><br>
 			<button onclick="bwrite()" type="button">쓰기</button><br>
+			<!-- 첨부파일 -->
+			<input type="file" name="pfile">
 		</form>
 	</div>
 	
