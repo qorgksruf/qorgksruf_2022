@@ -45,7 +45,7 @@
 			
 			<div class="title"> 프로필 </div>
 			<div class="pimgbox">
-				<input onchange="premimg(this)" type="file" name="mimg"	 		class="mimg">		
+				<input onchange="premimg(this)" type="file" name="mimg"	 	class="mimg">		
 				<img class="premimg" alt="" src="/jspweb/member/pimg/default.webp">
 			</div>
 			
