@@ -56,8 +56,7 @@
 	font-size: 12px;
 	
 }
-.secontent{
-	text-align: right;
+.secontent{ /* 보낼때 */
 	display: flex;
 	justify-content: flex-end;
 	align-items: flex-end;

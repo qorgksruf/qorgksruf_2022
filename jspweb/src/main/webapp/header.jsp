@@ -20,7 +20,9 @@
 </head>
 <body>
 	<!--모든 페이지 공통메뉴  -->
-
+	<div class="msgbox">
+		메시지가 도착했어요
+	</div>
 	
 
 		<div class="container">

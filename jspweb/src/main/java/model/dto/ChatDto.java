@@ -7,7 +7,39 @@ public class ChatDto {
 	private int pno;
 	private int frommno;
 	private int tomno;
+	//추가필드
+	private String frommid;//보낸 사람의 아이디
+	private String frommimg;//보낸 사람의 프로필
 	
+	public String getFrommid() {
+		return frommid;
+	}
+
+	public ChatDto(long nno, String ncontent, String ndate, int pno, int frommno, int tomno, String frommid,
+			String frommimg) {
+		super();
+		this.nno = nno;
+		this.ncontent = ncontent;
+		this.ndate = ndate;
+		this.pno = pno;
+		this.frommno = frommno;
+		this.tomno = tomno;
+		this.frommid = frommid;
+		this.frommimg = frommimg;
+	}
+
+	public void setFrommid(String frommid) {
+		this.frommid = frommid;
+	}
+
+	public String getFrommimg() {
+		return frommimg;
+	}
+
+	public void setFrommimg(String frommimg) {
+		this.frommimg = frommimg;
+	}
+
 	public ChatDto() {
 		super();
 	}

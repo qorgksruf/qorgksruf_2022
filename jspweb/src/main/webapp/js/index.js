@@ -17,8 +17,19 @@ function getproductList(){
 	})
 }*/
 
+// produclistprint(): 모든 제품 목록 html 출력함수
+// productList(): productList내 i 번째 제품1개 html 출력함수
+// chatprint(): 채팅창 html 출력 함수
+// sendchat(): 채팅창에서 입력된 데이터 저장하는 함수 [DB]
+// getproductList():기준[동서남북,검색]에 따른 제품목록 요청함수/ 마커 생성 
+// get동서남북(): 현재 보고있는 지도의 좌표구하기
+//setplike():찜하기 등록
+//getplike():찜하기 상태호출
+
 //제품 목록 출력
 let productList=null;
+
+//[2023-03-29 백한결] 1. 모든 제품 목록 html 출력 함수
 function produclistprint(){
 		let html =  `<p style="font-size:12px; text-align:right" > 제품목록수 : ${ productList.length } 개 </h6>`;
         
@@ -134,34 +145,85 @@ function productprint(i){
 					getplike(p.pno);
 }//end
 
-//채팅 페이지 이동
-function chatprint(i){
-	if(memberinfo.mid==null){
-		alert('회원기능입니다.');
-		return;
-	}
-	
+//9.제품별 채팅 목록 페이지 이동
+function chatlistprint(i){
 	let p = productList[i];
 	
-	let chathtml='';
+	let html='';
+	
 	$.ajax({
 		url:"/jspweb/product/Chat",
 		method:"get",
-		data:{"pno":p.pno,},
+		data:{"pno":p.pno,"chatmno":0},
+		async:false, /*동기식*/
+		success:(r)=>{
+			let printfromno=[]	//출력된mno
+			console.log("제품별 패팅목록 페이지");
+			console.log(r);
+			
+			r.forEach((o)=>{
+				if(!printfromno.includes(o.frommno)){ //구매자 채팅을 출력한적이 없으면
+					printfromno.push(o.frommno); //구매자번별 1번씩만 출력
+				}
+				//구매자마다 1개씩만 출력
+				html+=
+				`			
+				<div onclick="chatinfoprint(${i}, ${o.frommno})" class="charlist">
+				<div class="frommimg"> <img src="/jspweb/member/pimg/${ o.frommimg == null ? 'default.webp' : o.frommimg }" class="hpimg"> </div>
+					<div class="frominfo">
+						<div class="fromndata">${o.ndate}</div>
+						<div class="frommid">${o.frommno}</div>
+						<div class="fromcontent">${o.ncontent}</div>
+					</div>	
+				</div>
+				`
+			})
+			//구매자 번호가 존재하지 않으면 
+			if(printfromno.length==0){
+				html+='채팅목록이없습니다'
+			}
+		}
+	})
+	
+	document.querySelector('.productlistbox').innerHTML = html;
+}
+
+//전역변수
+let index=0;	//현재 보고있는 제품의 제품인덱스
+let chatmno=0;	//현재 채팅하고 있는 상대방의 mno
+
+//10.채팅방 내용물 요청해서 해당 html에 출력
+function getcontent(){
+	let chathtml='';
+	let pno =productList[index].pno;
+	$.ajax({
+		url:"/jspweb/product/Chat",
+		method:"get",
+		data:{"pno": pno,"chatmno":chatmno},
 		async:false, /*동기식*/
 		success:(r)=>{
 			console.log("chatt통신성공");
 			console.log(r);
 			r.forEach((o)=>{
-				if(r.frommno == memberinfo.mno){
+				if(o.frommno == memberinfo.mno && chatmno == o.tomno){//현재 로그인된 회원과 보낸 사람과 일치하면
 					chathtml+=`<div class="sendbox">${o.ncontent}</div>`
-				}else{
+				}else{//메시지 보낸사람과 채팅대상자가 일치하면
 					chathtml+=`<div class="receicebox">${o.ncontent}</div>`
 				}
 			})
 			
 		}
 	})
+	document.querySelector('.chatcontent').innerHTML=chathtml;
+}
+//11.채팅방 html 구성
+function chatinfoprint(i , tomno){
+	console.log(tomno+'에게 메시지 전송 페이지');
+	//전역변수에 담기
+	index=i;
+	chatmno=tomno;
+	
+	let p =productList[index];
 	
 	let html=`
 			<div class="charbox">
@@ -176,36 +238,57 @@ function chatprint(i){
 				</div>
 				
 				<div class="chatcontent">
-						${chathtml}
+					//10번 함수에서 대입할 예정
 				</div>
 				
 				<div class="chatbtn">
 					<textarea class="ncontentinput rows="" cols=""></textarea>
-					<button onclick="sendchat(${p.pno},${p.mno})" type="button">전송</button>
+					<button onclick="sendchat(${p.pno})" type="button">전송</button>
 				</div>
 				
 			</div>	`;
 
 	document.querySelector('.productlistbox').innerHTML = html;
+	getcontent();
+}
+
+
+//3.채팅 페이지 이동 [로그인 검사]
+function chatprint(i){
+	if(memberinfo.mid==null){//로그인 검사
+		alert('회원기능입니다.');
+		return;
+	}
+	
+	let p = productList[i];
+	//만약에 등록한회원이면[판매자]
+	if(memberinfo.mno == p.mno){//만약에 등록한회원이면
+		alert('본인이등록한제품입니다')
+		chatlistprint(i)//채팅목록으로 이동
+		return;
+	}
+	//만약에 등록한 회원이 아니면[구매자]: frommno 필요없다 -> 판매자가 곧 p.mo==frommno 이기 때문에
+	chatinfoprint(i, p.mno)
 }//end
 
-function sendchat(pno,tomno){
+function sendchat(pno){
 	let ncontent= document.querySelector('.ncontentinput').value;
 	$.ajax({
 		url:"/jspweb/product/Chat",
 		method:"post",
-		data:{"pno":pno, "ncontent":ncontent,"tomno":tomno},
+		data:{"pno":pno, "ncontent":ncontent,"tomno":chatmno},
 		success:(r)=>{
 			console.log("통신")
 			console.log(r)
 			if(r=="true"){
 				document.querySelector('.ncontentinput').value='';
+				getcontent();
 			}
 		}
 	})//ajax e
 }//f e
 
-
+//-----------------------------지도출력---------------------------------------//
 var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(33.45035074314823, 126.57112541869041), // 지도의 중심좌표 
         level : 3 // 지도의 확대 레벨 
@@ -264,6 +347,7 @@ var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 		}//success e
 	})//ajax e	
 }//m end
+
 //현재 지도의 좌표얻기
 get동서남북();
 function get동서남북(){

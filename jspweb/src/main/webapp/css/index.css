@@ -230,3 +230,42 @@ html,body{
 }
 
 
+/*---------------제품별 받은 채팅 목록--------------------------  */
+.charlist{
+	display: flex;
+	margin: 20px;
+	border-bottom: 1px solid ;
+	padding-bottom: 20px
+}
+
+.frominfo{
+	margin-left: 15px;
+}
+
+.frommid{
+	font-weight: bold;
+}
+
+.fromcontent{
+	font-size: 12px;
+}
+
+
+/*---------------------알림 모달구역--------------------  */
+
+.msgbox{
+	width: 200px;
+	height: 100px;
+	border: 1px solid red;
+	background: white;
+	position: fixed;
+	left: 1%;
+	bottom: -100px;
+	z-index: 300;
+	opacity: 0.8;
+	/* 에니메이션효과 */
+	/* 특정 css 변화있을때 css 변화시간(초)효과 */
+	transition: 0.5s;
+}
+
+

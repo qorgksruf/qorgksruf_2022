@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import controller.admin.Alarm;
 import model.dao.MemberDao;
 import model.dao.ProductDao;
 import model.dto.ChatDto;
@@ -36,8 +37,9 @@ public class ProductChat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			int pno =Integer.parseInt(request.getParameter("pno") );
 			int mno = MemberDao.getInstance().getMno((String)request.getSession().getAttribute("login"));
+			int chatmno = Integer.parseInt(request.getParameter("chatmno"));
 			
-			ArrayList<ChatDto>result = ProductDao.getInstance().getChatList(pno, mno);
+			ArrayList<ChatDto>result = ProductDao.getInstance().getChatList(pno, mno,chatmno);
 			ObjectMapper mapper = new ObjectMapper();
 			String jsonArray = mapper.writeValueAsString(result);
 			
@@ -61,6 +63,17 @@ public class ProductChat extends HttpServlet {
 			System.out.println("dto"+dto);
 			
 			boolean result = ProductDao.getInstance().setChat(dto);
+			//4.만약에 채팅 등록이 성공했으면 tomno 에게 소켓 알림 메시지 보내기
+			if(result) {
+				//서버소켓에게 채팅을 받은 유저의 번호와 내용을 전달		
+				try {
+					Alarm.서버메시지(null, 받는회원정보+","+쪽지내용);
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+			
 			response.getWriter().print(result);
 			
 	}
