@@ -3,6 +3,7 @@ package model.dao;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.dto.ChatDto;
 import model.dto.ProductDto;
@@ -198,18 +199,48 @@ public class ProductDao extends Dao{
 		}
 		return list;
 	}
-	
-	//얘가 채팅목록 가져오는거
-	//String sql=" select * from note where pno= ? and (frommno=? or tomno=? )";	//해당제품이면서 받거나 보낸거 다 갖구오기
-	
-	//현재 같이 채팅하고 있는 대상자들의 내용물만 출력
+	//7.날짜별 포인트 충전 내역
+	public HashMap<String, Integer> getSum(){
+		HashMap<String, Integer>map = new HashMap<>();
+		//ArrayList<String>list = new ArrayList<>(); 이거는 string 타입의 객체만 저장가능한데 Map는 string 타입의 키와 Interger 타입의 데이터 사용가능
+		String sql="select "
+				+ "   date_format( mdate , '%Y-%m-%d' ) as mdate , "
+				+ "    sum( if( mpcomment = '포인트충전' , mpamount , 0 ) ) as point "
+				+ "from mpoint group by date_format( mdate , '%Y-%m-%d' ) ;";
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {	//put(키, 데이터)
+				map.put(rs.getString(1), rs.getInt(2));
+			}
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		
+		}
+		return map;
+	}
 
 	
-	// 1.로그인된 회원기준으로 보내거나 받은 메시지 모두출력
-	// String sql=" select * from note where pno= ? and (frommno=? or tomno=? )";
-	//1.구매자 문제 없음 2.판매자는 채팅 대상만의 메시지만 출력 해야함 문제 발생
-	//2. 만약에 채팅방에 4번 회원과 5번회원이 존재할때
-	//frommno=4 이면서 tomno=5 이거나 frommno=5 이면서 tomno=4 이 구조를 원함
-	//-4번 회원이 보냈거나 받았으면 5번 회원이 받았거나 보냈으면
-	
 }
+/*
+ * Arraylist<타입>list = new Arraylist<>()
+ * 이거 비슷한거
+ * 
+ * 해당 키타입과 데이터타입의 해당하는 키와데이터를 여러개 저장할 수 있는 맵객체
+ * HashMap<키타입,데이터타입>map = new HashMap<>();
+ * 
+ * */
+
+//얘가 채팅목록 가져오는거
+//String sql=" select * from note where pno= ? and (frommno=? or tomno=? )";	//해당제품이면서 받거나 보낸거 다 갖구오기
+
+//현재 같이 채팅하고 있는 대상자들의 내용물만 출력
+
+
+// 1.로그인된 회원기준으로 보내거나 받은 메시지 모두출력
+// String sql=" select * from note where pno= ? and (frommno=? or tomno=? )";
+//1.구매자 문제 없음 2.판매자는 채팅 대상만의 메시지만 출력 해야함 문제 발생
+//2. 만약에 채팅방에 4번 회원과 5번회원이 존재할때
+//frommno=4 이면서 tomno=5 이거나 frommno=5 이면서 tomno=4 이 구조를 원함
+//-4번 회원이 보냈거나 받았으면 5번 회원이 받았거나 보냈으면
